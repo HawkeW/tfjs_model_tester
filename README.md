@@ -1,5 +1,50 @@
-# Vue 3 + Vite
+# README.md
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+- en [English](README.md)
+- zh_CN [简体中文](readme/README.zh_CN.md)
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+# TFJS Model Performance Tester
+
+A web-based application for testing and comparing the performance of TensorFlow.js models. Built with Vue 3 and Vite, this tool helps developers evaluate model inference times, FPS, and other performance metrics across different models and images.
+
+## Features
+
+- 📊 Performance Testing
+  - Batch testing of multiple models
+  - Warmup run support
+  - Multiple image testing
+  - Detailed performance metrics
+
+- 📈 Performance Metrics
+  - Inference time measurement
+  - FPS calculation
+  - Warmup time tracking
+  - Min/Max inference times
+  - Detection count statistics
+
+- 🖼️ Image Support
+  - Drag and drop image upload
+  - Multiple image selection
+  - Image preview functionality
+  - Common image format support
+
+- 📉 Visualization
+  - Interactive performance charts
+  - Detailed results table
+  - CSV export functionality
+  - Result comparison
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v20 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd tfjs_model_tester
+```
