@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  #  推荐使用 16 或更高的版本
+          node-version: '20'  #  推荐使用 20 或更高的版本
 
       - name: Install dependencies
         run: npm install  # 或者 yarn install，或者 pnpm install
