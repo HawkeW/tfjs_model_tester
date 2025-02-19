@@ -1,0 +1,15 @@
+description: Ultralytics YOLOv8_relu model trained on /media/fm/DADA_DISK/UAV_DATASET/0_fm_train_configs_yaml/dataset_config/obj_det/shell/fm_uav_dataset_shell_train_v1.yaml
+author: Ultralytics
+date: '2025-01-23T10:10:07.812568'
+version: 8.1.38
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 1024
+- 1024
+names:
+  0: smoke
+  1: blast
