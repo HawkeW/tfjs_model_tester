@@ -1,8 +1,8 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/browserAll-DpLewApp.js","assets/webworkerAll-4v-z7VIb.js","assets/colorToUniform-C2GHuDhf.js","assets/CanvasPool-dZP2PbFZ.js","assets/index-N0A0NpVe.js","assets/index-CEHQZcs2.css","assets/WebGPURenderer-CTMKEn7X.js","assets/SharedSystems-C7PuDHqX.js","assets/WebGLRenderer-CkGnqAxm.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/browserAll-Bj0U816Z.js","assets/webworkerAll-CVIgeszx.js","assets/colorToUniform-C2GHuDhf.js","assets/CanvasPool-C8I1uklZ.js","assets/index-UPBmPIZ-.js","assets/index-CEHQZcs2.css","assets/WebGPURenderer-BXDazO0j.js","assets/SharedSystems-UWNpdCGz.js","assets/WebGLRenderer-QRA_khli.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-import { h as Qa, c as Att, _ as Bf, d as pW, e as Tk, r as fe, s as ktt, a as Ae, w as Yr, i as gW, b as ce, g as Zi, F as Dg, f as vW, o as gd, j as p1, k as se, T as Dtt, n as Jo, u as Q, t as Ev, l as Je, m as Rt, p as ke, q as Ett, v as mW, x as Mtt, y as cL, C as Rtt, z as Li, A as Ntt, B as yW, D as he, E as Ltt, G as Op, H as xW, I as Eg, J as Ik, K as Ak, L as Ptt, M as Gc, N as $tt, O as Ott, P as Ftt, Q as Btt, R as ztt, S as ta, U as Ur, V as le, W as Vtt, X as Gtt, Y as De, Z as fr, $ as hL, a0 as Wtt, __tla as __tla_0 } from "./index-N0A0NpVe.js";
+import { h as Qa, c as Att, _ as Bf, d as pW, e as Tk, r as fe, s as ktt, a as Ae, w as Yr, i as gW, b as ce, g as Zi, F as Dg, f as vW, o as gd, j as p1, k as se, T as Dtt, n as Jo, u as Q, t as Ev, l as Je, m as Rt, p as ke, q as Ett, v as mW, x as Mtt, y as cL, C as Rtt, z as Li, A as Ntt, B as yW, D as he, E as Ltt, G as Op, H as xW, I as Eg, J as Ik, K as Ak, L as Ptt, M as Gc, N as $tt, O as Ott, P as Ftt, Q as Btt, R as ztt, S as ta, U as Ur, V as le, W as Vtt, X as Gtt, Y as De, Z as fr, $ as hL, a0 as Wtt, __tla as __tla_0 } from "./index-UPBmPIZ-.js";
 let BN, pQ, Di, Eh, as, rn, hs, Pw, dYt, DG, cd, BYt, qYt, Ve, Yn, yr, Xr, JYt, nk, yqt, z0, Q2, MG, WT, NG, vYt, jr, BJ, po, gQ, fn, An, rqt, Cqt, Wqt, Hqt, Kqt, Jqt, Qqt, RN, ch, e7t, n7t, u1, ck, xf, Kjt, DQ, jG, YG, PXt, h1, OXt, RQ, QQt, Cv, Lx, DN, Pa, qG, gqt, hQ, jJ, gs, cQ, Gqt, Uqt, mG, qqt, Zqt, xQ, KXt, EN, on, sQ, $Xt, Ki, ejt, Oo, $J;
 let __tla = Promise.all([
   (() => {
@@ -84267,7 +84267,7 @@ return a / b;`, gHt = `
   ];
   for (const n of bXt) yq(n);
   function _Xt(n) {
-    return new Worker("/assets/detect.worker-CxeD56_M.js", {
+    return new Worker("/tfjs_model_tester/assets/detect.worker-CxeD56_M.js", {
       name: n == null ? void 0 : n.name
     });
   }
@@ -84421,7 +84421,7 @@ return a / b;`, gHt = `
     },
     test: () => true,
     load: async () => {
-      await Bf(() => import("./browserAll-DpLewApp.js").then(async (m) => {
+      await Bf(() => import("./browserAll-Bj0U816Z.js").then(async (m) => {
         await m.__tla;
         return m;
       }), __vite__mapDeps([0,1,2,3,4,5]));
@@ -84435,7 +84435,7 @@ return a / b;`, gHt = `
     },
     test: () => typeof self < "u" && self.WorkerGlobalScope !== void 0,
     load: async () => {
-      await Bf(() => import("./webworkerAll-4v-z7VIb.js").then(async (m) => {
+      await Bf(() => import("./webworkerAll-CVIgeszx.js").then(async (m) => {
         await m.__tla;
         return m;
       }), __vite__mapDeps([1,2,3,4,5]));
@@ -89212,7 +89212,7 @@ ${n}`;
       const s = t[a];
       if (s === "webgpu" && await eqt()) {
         const { WebGPURenderer: o } = await Bf(async () => {
-          const { WebGPURenderer: l } = await import("./WebGPURenderer-CTMKEn7X.js").then(async (m) => {
+          const { WebGPURenderer: l } = await import("./WebGPURenderer-BXDazO0j.js").then(async (m) => {
             await m.__tla;
             return m;
           });
@@ -89227,7 +89227,7 @@ ${n}`;
         break;
       } else if (s === "webgl" && tqt(n.failIfMajorPerformanceCaveat ?? pQ.defaultOptions.failIfMajorPerformanceCaveat)) {
         const { WebGLRenderer: o } = await Bf(async () => {
-          const { WebGLRenderer: l } = await import("./WebGLRenderer-CkGnqAxm.js").then(async (m) => {
+          const { WebGLRenderer: l } = await import("./WebGLRenderer-QRA_khli.js").then(async (m) => {
             await m.__tla;
             return m;
           });
