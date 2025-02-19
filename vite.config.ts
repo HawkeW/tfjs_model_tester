@@ -4,6 +4,7 @@ import topLevelAwait from "vite-plugin-top-level-await"
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/tfjs_model_tester',
   plugins: [vue(), topLevelAwait()],
   resolve: {
     alias: {
