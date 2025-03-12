@@ -43,19 +43,31 @@
       </CardContent>
 
       <CardContent>
-        <div class="flex gap-6 items-center justify-center">
-          <Button :disabled="isLoading || !selectedModels.length || !testImages.length"
-            class="min-w-[140px] transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg disabled:opacity-50"
-            @click="startBatchTest">
-            <LucideLoader v-if="isLoading" class="mr-2 h-4 w-4 animate-spin" />
-            {{ t('modelTest.startTest') }}
-          </Button>
+        <div class="flex flex-col gap-4 items-center justify-center">
+          <div class="flex items-center gap-4 w-full max-w-2xl mx-auto">
+            <label class="text-sm text-gray-600">{{ t('modelTest.warmupCount') }}:</label>
+            <input type="number" v-model="warmupCount" min="1" max="100" :disabled="isLoading"
+              class="w-24 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed" />
+           </div>
+           <div class="flex items-center gap-4 w-full max-w-2xl mx-auto">
+            <label class="text-sm text-gray-600">{{ t('modelTest.inferenceCount') }}:</label>
+            <input type="number" v-model="testCount" min="1" max="100" :disabled="isLoading"
+              class="w-24 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed" />
+          </div>
+          <div class="flex gap-6">
+            <Button :disabled="isLoading || !selectedModels.length || !testImages.length"
+              class="min-w-[140px] transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg disabled:opacity-50"
+              @click="startBatchTest">
+              <LucideLoader v-if="isLoading" class="mr-2 h-4 w-4 animate-spin" />
+              {{ t('modelTest.startTest') }}
+            </Button>
 
-          <Button variant="outline" :disabled="!hasTestResults"
-            class="min-w-[140px] transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md disabled:opacity-50"
-            @click="exportResults">
-            {{ t('modelTest.exportResults') }}
-          </Button>
+            <Button variant="outline" :disabled="!hasTestResults"
+              class="min-w-[140px] transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-md disabled:opacity-50"
+              @click="exportResults">
+              {{ t('modelTest.exportResults') }}
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>
@@ -111,7 +123,7 @@
     </div>
 
     <Dialog v-model:open="detailVisible">
-      <DialogContent class="sm:max-w-[800px] rounded-xl overflow-hidden">
+      <DialogContent class="sm:max-w-[800px] rounded-xl overflow-hidden bg-white/95 shadow-xl border border-gray-100/20">
         <DialogHeader class="border-b pb-4">
           <DialogTitle class="text-xl font-bold">{{ t('modelTest.dialog.title') }}</DialogTitle>
         </DialogHeader>
@@ -126,32 +138,44 @@
               <div class="font-medium">{{ currentDetail?.modelName }}</div>
             </div>
             <div class="space-y-2">
-              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.warmupTime') }}</div>
-              <div class="font-medium">{{ currentDetail?.warmupTime }}ms</div>
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.detectionCount') }}</div>
+              <div class="font-medium">{{ currentDetail?.detections }}</div>
             </div>
             <div class="space-y-2">
-              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.avgInferenceTime') }}</div>
-              <div class="font-medium">{{ currentDetail?.inferenceTime }}ms</div>
-            </div>
-            <div class="space-y-2">
-              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.minInferenceTime') }}</div>
-              <div class="font-medium">{{ currentDetail?.minInferenceTime }}ms</div>
-            </div>
-            <div class="space-y-2">
-              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.maxInferenceTime') }}</div>
-              <div class="font-medium">{{ currentDetail?.maxInferenceTime }}ms</div>
-            </div>
-            <div class="space-y-2">
-              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.avgFps') }}</div>
-              <div class="font-medium">{{ currentDetail?.fps }}</div>
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.warmupCount') }}</div>
+              <div class="font-medium">{{ currentDetail?.warmupCount }}</div>
             </div>
             <div class="space-y-2">
               <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.testCount') }}</div>
               <div class="font-medium">{{ currentDetail?.batchSize }}</div>
             </div>
             <div class="space-y-2">
-              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.detectionCount') }}</div>
-              <div class="font-medium">{{ currentDetail?.detections }}</div>
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.totalCount') }}</div>
+              <div class="font-medium">{{ (currentDetail?.batchSize ?? 0) + (currentDetail?.warmupCount ?? 0) }}</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.warmupTime') }}</div>
+              <div class="font-medium">{{ currentDetail?.warmupTime?.toFixed(0) }}ms</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.avgInferenceTime') }}</div>
+              <div class="font-medium">{{ currentDetail?.inferenceTime?.toFixed(0) }}ms</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.avgFps') }}</div>
+              <div class="font-medium">{{ currentDetail?.fps }}</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.minInferenceTime') }}</div>
+              <div class="font-medium">{{ currentDetail?.minInferenceTime?.toFixed(0) }}ms</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.maxInferenceTime') }}</div>
+              <div class="font-medium">{{ currentDetail?.maxInferenceTime?.toFixed(0) }}ms</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.totalTime') }}</div>
+              <div class="font-medium">{{ ((currentDetail?.totalTime ?? 0) / 1000).toFixed(1) }}s</div>
             </div>
           </div>
         </div>
@@ -189,6 +213,11 @@ const currentDetail = ref<any>(null);
 const performanceChart = ref<HTMLElement>();
 const detailCanvas = ref<HTMLCanvasElement>();
 const fileInput = ref<HTMLInputElement>();
+const warmupCount = ref<number>(1); // 添加预热次数配置
+
+// 批量测试
+const TEST_ITERATIONS = 10;
+const testCount = ref(TEST_ITERATIONS)
 
 const videoDetectStore = useVideoDetectStore();
 const testResults = ref<any[]>([]);
@@ -242,9 +271,6 @@ const handleImageUpload = (event: Event) => {
   });
 };
 
-// 批量测试
-const TEST_ITERATIONS = 50;
-
 // 修改批量测试函数
 const startBatchTest = async () => {
   if (!selectedModels.value.length || !testImages.value.length) {
@@ -264,28 +290,45 @@ const startBatchTest = async () => {
       await videoDetectStore.loadModel(model);
 
       for (const image of testImages.value) {
-        // 先进行预热
-        const warmupResult = await runSingleTest(name, model, image.bitmap, image.file.name);
-        const batchResults = [];
+        const startTime = performance.now();
+
+        // 执行预热测试
+        const warmupResults = [];
+        for (let i = 0; i < warmupCount.value; i++) {
+          const result = await runSingleTest(name, model, image.bitmap, image.file.name);
+          warmupResults.push(result);
+        }
+
+        // 计算预热平均时间
+        const avgWarmupTime = Math.round(
+          warmupResults.reduce((sum, r) => sum + r.inferenceTime, 0) / warmupCount.value
+        );
 
         // 执行正式测试
-        for (let i = 0; i < TEST_ITERATIONS; i++) {
+        const batchResults = [];
+        for (let i = 0; i < testCount.value; i++) {
           const result = await runSingleTest(name, model, image.bitmap, image.file.name);
           batchResults.push(result);
         }
+
+        const endTime = performance.now();
+        const totalTime = endTime - startTime;
 
         // 计算均值（不包含预热时间）
         const avgResult = {
           modelName: name,
           modelUrl: model,
           imageName: image.file.name,
-          warmupTime: warmupResult.inferenceTime,
-          inferenceTime: Math.round(batchResults.reduce((sum, r) => sum + r.inferenceTime, 0) / TEST_ITERATIONS),
+          warmupTime: avgWarmupTime,
+          inferenceTime: Math.round(batchResults.reduce((sum, r) => sum + r.inferenceTime, 0) / testCount.value),
           fps: Math.round(batchResults.reduce((sum, r) => sum + r.fps, 0) / TEST_ITERATIONS),
           detections: batchResults[0].detections,
-          batchSize: TEST_ITERATIONS,
+          batchSize: testCount.value,
           minInferenceTime: Math.min(...batchResults.map((r) => r.inferenceTime)),
           maxInferenceTime: Math.max(...batchResults.map((r) => r.inferenceTime)),
+          totalTime: totalTime,
+          warmupResults: warmupResults,
+          warmupCount: warmupCount.value
         };
 
         testResults.value.push(avgResult);

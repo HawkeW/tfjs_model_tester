@@ -9,12 +9,15 @@
       "maxInferenceTime": "Maximum Inference Time",
       "minInferenceTime": "Minimum Inference Time",
       "modelName": "Model Name",
-      "testCount": "Test Count",
+      "testCount": "Inference Times",
       "title": "Test Details",
-      "warmupTime": "Warmup Time"
+      "totalCount": "Inference Count",
+      "totalTime": "Total Time",
+      "warmupTime": "Average Warmup Time"
     },
     "enterModelUrls": "Enter model urls (seprate by line)",
     "exportResults": "Export Results",
+    "inferenceCount": "Inference Times",
     "messages": {
       "selectModelAndImage": "Please select a model and upload test images",
       "testError": "Test Error: "
@@ -35,6 +38,7 @@
     },
     "title": "Model Performance Test",
     "uploadClickText": "click to upload",
-    "uploadText": "Drag and drop test image file here or"
+    "uploadText": "Drag and drop test image file here or",
+    "warmupCount": "Warnups"
   }
 }
