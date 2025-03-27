@@ -30,35 +30,6 @@ export default defineConfig({
       }
     }
   },
-  worker: {
-    plugins: [
-      wasm(),
-      topLevelAwait(),
-    ],
-    rollupOptions: {
-      output: {
-        chunkFileNames: (chunkInfo) => {
-          if (chunkInfo.name && chunkInfo.name.includes('tfjs-backend-wasm')) {
-            return '[name].js';
-          }
-          return 'assets/[name]-[hash].js';
-        },
-        entryFileNames: (chunkInfo) => {
-          if (chunkInfo.name && chunkInfo.name.includes('tfjs-backend-wasm')) {
-            return '[name].js';
-          }
-          return 'assets/[name]-[hash].js';
-        },
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.includes('tfjs-backend-wasm')) {
-            return '[name][extname]';
-          }
-          return 'assets/[name]-[hash][extname]';
-        }
-      }
-    }
-  },
-  publicDir: 'public',
   resolve: {
     alias: {
       '@': '/src',
