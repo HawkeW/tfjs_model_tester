@@ -1,6 +1,8 @@
 import jsyaml from 'js-yaml';
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-backend-webgl';
+import '@tensorflow/tfjs-backend-wasm';
+import '@tensorflow/tfjs-backend-webgpu';
 import {TfModel} from './utils/model';
 
 interface YamlMetadata {
@@ -35,20 +37,30 @@ export class VideoEnhancer {
     return VideoEnhancer._instance!;
   }
 
-  async init() {
-    if (this.ready) return true;
+  async init(backend: string = 'webgl') {
+    if (this.ready) {
+      const currentBackend = tf.getBackend();
+      if (currentBackend !== backend) {
+        await tf.setBackend(backend);
+        await tf.ready();
+        console.log( backend, tf.getBackend()); // trigger backend ini
+      }
+      return true;
+    }
     try {
-      await tf.setBackend('webgl');
+      await tf.setBackend(backend);
+      console.log( backend, tf.getBackend()); // trigger backend ini
       await tf.ready();
       this.ready = true;
       return true;
     } catch (e) {
+      console.error('Failed to initialize backend:', e);
       return false;
     }
   }
 
-  async loadGraphModel(modelUrl: string, onProgress: (progress: number) => void) {
-    await this.init();
+  async loadGraphModel(modelUrl: string, onProgress: (progress: number) => void, backend: string = 'webgl') {
+    await this.init(backend);
     if (this.model) {
       this.model.dispose();
       this.model = null;

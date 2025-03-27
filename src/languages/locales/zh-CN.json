@@ -1,10 +1,12 @@
 {
   "hello": "你好",
   "modelTest": {
+    "backend": "后端",
     "detailData": "详细数据",
     "dialog": {
       "avgFps": "平均FPS",
       "avgInferenceTime": "平均推理时间",
+      "backend": "后端",
       "detectionCount": "检测数量",
       "maxInferenceTime": "最大推理时间",
       "minInferenceTime": "最小推理时间",

@@ -8,6 +8,7 @@ const videoEnhancer = VideoEnhancer.getInstance();
 
 export const useVideoDetectStore = defineStore('video-detect', {
   state: (): VideoDetectState => ({
+    backend: 'webgl',
     loadedModel: '',
     loadState: {
       loading: false,
@@ -15,6 +16,9 @@ export const useVideoDetectStore = defineStore('video-detect', {
     },
   }),
   actions: {
+    async setBackend(backend: string = 'webgl') {
+      this.backend = backend;
+    },
     async loadModel(modelUrl: string) {
       await videoEnhancer.loadGraphModel(modelUrl, (progress) => {
         if (progress === 100) {
@@ -23,7 +27,7 @@ export const useVideoDetectStore = defineStore('video-detect', {
           this.loadState.loading = true;
           this.loadState.progress = progress;
         }
-      });
+      }, this.backend);
       await videoEnhancer.testRun();
       this.loadState.loading = false;
       this.loadedModel = modelUrl;

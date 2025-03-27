@@ -1,10 +1,12 @@
 {
   "hello": "Hello",
   "modelTest": {
+    "backend": "Backend",
     "detailData": "Detailed Data",
     "dialog": {
       "avgFps": "Average FPS",
       "avgInferenceTime": "Average Inference Time",
+      "backend": "Backend",
       "detectionCount": "Detection Count",
       "maxInferenceTime": "Maximum Inference Time",
       "minInferenceTime": "Minimum Inference Time",

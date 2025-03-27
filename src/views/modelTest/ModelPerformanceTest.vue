@@ -54,6 +54,15 @@
             <input type="number" v-model="testCount" min="1" max="100" :disabled="isLoading"
               class="w-24 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed" />
           </div>
+          <div class="flex items-center gap-4 w-full max-w-2xl mx-auto">
+            <label class="text-sm text-gray-600">{{ t('modelTest.backend') }}:</label>
+            <select v-model="selectedBackend" :disabled="isLoading"
+              class="w-32 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+              <option value="webgl">WebGL</option>
+              <option value="webgpu">WebGPU</option>
+              <option value="wasm">WASM</option>
+            </select>
+          </div>
           <div class="flex gap-6">
             <Button :disabled="isLoading || !selectedModels.length || !testImages.length"
               class="min-w-[140px] transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg disabled:opacity-50"
@@ -138,6 +147,10 @@
               <div class="font-medium">{{ currentDetail?.modelName }}</div>
             </div>
             <div class="space-y-2">
+              <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.backend') }}</div>
+              <div class="font-medium">{{ currentDetail?.backend }}</div>
+            </div>
+            <div class="space-y-2">
               <div class="text-sm font-semibold text-gray-500">{{ t('modelTest.dialog.detectionCount') }}</div>
               <div class="font-medium">{{ currentDetail?.detections }}</div>
             </div>
@@ -198,6 +211,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@/components/ui/table';
 import { useToast } from '@/components/ui/toast';
+import * as tf from '@tensorflow/tfjs';
 
 const { t } = useLanguage();
 const { toast } = useToast();
@@ -214,6 +228,7 @@ const performanceChart = ref<HTMLElement>();
 const detailCanvas = ref<HTMLCanvasElement>();
 const fileInput = ref<HTMLInputElement>();
 const warmupCount = ref<number>(1); // 添加预热次数配置
+const selectedBackend = ref<string>('webgl'); // 添加后端选择配置
 
 // 批量测试
 const TEST_ITERATIONS = 10;
@@ -284,6 +299,8 @@ const startBatchTest = async () => {
   isLoading.value = true;
   testResults.value = [];
 
+  await videoDetectStore.setBackend(selectedBackend.value)
+  
   try {
     for (const currentModel of selectedModels.value) {
       const { name, url: model } = currentModel
@@ -328,7 +345,8 @@ const startBatchTest = async () => {
           maxInferenceTime: Math.max(...batchResults.map((r) => r.inferenceTime)),
           totalTime: totalTime,
           warmupResults: warmupResults,
-          warmupCount: warmupCount.value
+          warmupCount: warmupCount.value,
+          backend: selectedBackend.value,
         };
 
         testResults.value.push(avgResult);
