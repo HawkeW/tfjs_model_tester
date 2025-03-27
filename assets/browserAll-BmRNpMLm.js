@@ -1,8 +1,9 @@
-import { P as f, r as J, E as T, T as S, U as Q, a as ee, w as m, e as O, C as Z, __tla as __tla_0 } from "./ModelPerformanceTest-CoXpsfai.js";
-import { __tla as __tla_1 } from "./webworkerAll-Dv7AH6DU.js";
-import { __tla as __tla_2 } from "./index-qfyYY3AK.js";
+import { P as f, r as Q, E as _, T as C, U as ee, a as te, w as g, e as P, C as Z, __tla as __tla_0 } from "./ModelPerformanceTest-zQ3DIqG6.js";
+import { __tla as __tla_1 } from "./webworkerAll-Df24uNNZ.js";
+import { __tla as __tla_2 } from "./index-C_KNhBjg.js";
+import { __tla as __tla_3 } from "./base-D4gcL655.js";
 import "./colorToUniform-C2GHuDhf.js";
-import { __tla as __tla_3 } from "./CanvasPool-JF4hqPRV.js";
+import { __tla as __tla_4 } from "./CanvasPool-BnRu4Vcd.js";
 Promise.all([
   (() => {
     try {
@@ -27,11 +28,17 @@ Promise.all([
       return __tla_3;
     } catch {
     }
+  })(),
+  (() => {
+    try {
+      return __tla_4;
+    } catch {
+    }
   })()
 ]).then(async () => {
-  class P {
+  class w {
     constructor(e) {
-      this.bubbles = true, this.cancelBubble = true, this.cancelable = false, this.composed = false, this.defaultPrevented = false, this.eventPhase = P.prototype.NONE, this.propagationStopped = false, this.propagationImmediatelyStopped = false, this.layer = new f(), this.page = new f(), this.NONE = 0, this.CAPTURING_PHASE = 1, this.AT_TARGET = 2, this.BUBBLING_PHASE = 3, this.manager = e;
+      this.bubbles = true, this.cancelBubble = true, this.cancelable = false, this.composed = false, this.defaultPrevented = false, this.eventPhase = w.prototype.NONE, this.propagationStopped = false, this.propagationImmediatelyStopped = false, this.layer = new f(), this.page = new f(), this.NONE = 0, this.CAPTURING_PHASE = 1, this.AT_TARGET = 2, this.BUBBLING_PHASE = 3, this.manager = e;
     }
     get layerX() {
       return this.layer.x;
@@ -67,10 +74,10 @@ Promise.all([
       this.propagationStopped = true;
     }
   }
-  var I = /iPhone/i, C = /iPod/i, U = /iPad/i, R = /\biOS-universal(?:.+)Mac\b/i, k = /\bAndroid(?:.+)Mobile\b/i, X = /Android/i, _ = /(?:SD4930UR|\bSilk(?:.+)Mobile\b)/i, w = /Silk/i, v = /Windows Phone/i, F = /\bWindows(?:.+)ARM\b/i, Y = /BlackBerry/i, H = /BB10/i, N = /Opera Mini/i, K = /\b(CriOS|Chrome)(?:.+)Mobile/i, $ = /Mobile(?:.+)Firefox\b/i, j = function(a) {
+  var I = /iPhone/i, S = /iPod/i, U = /iPad/i, R = /\biOS-universal(?:.+)Mac\b/i, x = /\bAndroid(?:.+)Mobile\b/i, $ = /Android/i, b = /(?:SD4930UR|\bSilk(?:.+)Mobile\b)/i, M = /Silk/i, v = /Windows Phone/i, X = /\bWindows(?:.+)ARM\b/i, N = /BlackBerry/i, F = /BB10/i, Y = /Opera Mini/i, H = /\b(CriOS|Chrome)(?:.+)Mobile/i, K = /Mobile(?:.+)Firefox\b/i, j = function(a) {
     return typeof a < "u" && a.platform === "MacIntel" && typeof a.maxTouchPoints == "number" && a.maxTouchPoints > 1 && typeof MSStream > "u";
   };
-  function te(a) {
+  function ie(a) {
     return function(e) {
       return e.test(a);
     };
@@ -92,36 +99,36 @@ Promise.all([
     });
     var t = e.userAgent, i = t.split("[FBAN");
     typeof i[1] < "u" && (t = i[0]), i = t.split("Twitter"), typeof i[1] < "u" && (t = i[0]);
-    var n = te(t), s = {
+    var n = ie(t), s = {
       apple: {
         phone: n(I) && !n(v),
-        ipod: n(C),
+        ipod: n(S),
         tablet: !n(I) && (n(U) || j(e)) && !n(v),
         universal: n(R),
-        device: (n(I) || n(C) || n(U) || n(R) || j(e)) && !n(v)
+        device: (n(I) || n(S) || n(U) || n(R) || j(e)) && !n(v)
       },
       amazon: {
-        phone: n(_),
-        tablet: !n(_) && n(w),
-        device: n(_) || n(w)
+        phone: n(b),
+        tablet: !n(b) && n(M),
+        device: n(b) || n(M)
       },
       android: {
-        phone: !n(v) && n(_) || !n(v) && n(k),
-        tablet: !n(v) && !n(_) && !n(k) && (n(w) || n(X)),
-        device: !n(v) && (n(_) || n(w) || n(k) || n(X)) || n(/\bokhttp\b/i)
+        phone: !n(v) && n(b) || !n(v) && n(x),
+        tablet: !n(v) && !n(b) && !n(x) && (n(M) || n($)),
+        device: !n(v) && (n(b) || n(M) || n(x) || n($)) || n(/\bokhttp\b/i)
       },
       windows: {
         phone: n(v),
-        tablet: n(F),
-        device: n(v) || n(F)
+        tablet: n(X),
+        device: n(v) || n(X)
       },
       other: {
-        blackberry: n(Y),
-        blackberry10: n(H),
-        opera: n(N),
-        firefox: n($),
-        chrome: n(K),
-        device: n(Y) || n(H) || n(N) || n($) || n(K)
+        blackberry: n(N),
+        blackberry10: n(F),
+        opera: n(Y),
+        firefox: n(K),
+        chrome: n(H),
+        device: n(N) || n(F) || n(Y) || n(K) || n(H)
       },
       any: false,
       phone: false,
@@ -129,8 +136,8 @@ Promise.all([
     };
     return s.any = s.apple.device || s.android.device || s.windows.device || s.other.device, s.phone = s.apple.phone || s.android.phone || s.windows.phone, s.tablet = s.apple.tablet || s.android.tablet || s.windows.tablet, s;
   }
-  const ie = G.default ?? G, ne = ie(globalThis.navigator), se = 9, M = 100, oe = 0, re = 0, W = 2, z = 1, ae = -1e3, he = -1e3, le = 2, B = class V {
-    constructor(e, t = ne) {
+  const ne = G.default ?? G, se = ne(globalThis.navigator), oe = 9, A = 100, re = 0, ae = 0, W = 2, z = 1, le = -1e3, he = -1e3, de = 2, B = class V {
+    constructor(e, t = se) {
       this._mobileInfo = t, this.debug = false, this._activateOnTab = true, this._deactivateOnMouseMove = true, this._isActive = false, this._isMobileAccessibility = false, this._div = null, this._pool = [], this._renderId = 0, this._children = [], this._androidUpdateCount = 0, this._androidUpdateFrequency = 500, this._hookDiv = null, (t.tablet || t.phone) && this._createTouchHook(), this._renderer = e;
     }
     get isActive() {
@@ -144,7 +151,7 @@ Promise.all([
     }
     _createTouchHook() {
       const e = document.createElement("button");
-      e.style.width = `${z}px`, e.style.height = `${z}px`, e.style.position = "absolute", e.style.top = `${ae}px`, e.style.left = `${he}px`, e.style.zIndex = le.toString(), e.style.backgroundColor = "#FF0000", e.title = "select to enable accessibility for this content", e.addEventListener("focus", () => {
+      e.style.width = `${z}px`, e.style.height = `${z}px`, e.style.position = "absolute", e.style.top = `${le}px`, e.style.left = `${he}px`, e.style.zIndex = de.toString(), e.style.backgroundColor = "#FF0000", e.title = "select to enable accessibility for this content", e.addEventListener("focus", () => {
         this._isMobileAccessibility = true, this._activate(), this._destroyTouchHook();
       }), document.body.appendChild(e), this._hookDiv = e;
     }
@@ -153,7 +160,7 @@ Promise.all([
     }
     _activate() {
       if (this._isActive) return;
-      this._isActive = true, this._div || (this._div = document.createElement("div"), this._div.style.width = `${M}px`, this._div.style.height = `${M}px`, this._div.style.position = "absolute", this._div.style.top = `${oe}px`, this._div.style.left = `${re}px`, this._div.style.zIndex = W.toString(), this._div.style.pointerEvents = "none"), this._activateOnTab && (this._onKeyDown = this._onKeyDown.bind(this), globalThis.addEventListener("keydown", this._onKeyDown, false)), this._deactivateOnMouseMove && (this._onMouseMove = this._onMouseMove.bind(this), globalThis.document.addEventListener("mousemove", this._onMouseMove, true));
+      this._isActive = true, this._div || (this._div = document.createElement("div"), this._div.style.width = `${A}px`, this._div.style.height = `${A}px`, this._div.style.position = "absolute", this._div.style.top = `${re}px`, this._div.style.left = `${ae}px`, this._div.style.zIndex = W.toString(), this._div.style.pointerEvents = "none"), this._activateOnTab && (this._onKeyDown = this._onKeyDown.bind(this), globalThis.addEventListener("keydown", this._onKeyDown, false)), this._deactivateOnMouseMove && (this._onMouseMove = this._onMouseMove.bind(this), globalThis.document.addEventListener("mousemove", this._onMouseMove, true));
       const e = this._renderer.view.canvas;
       if (e.parentNode) e.parentNode.appendChild(this._div), this._initAccessibilitySetup();
       else {
@@ -203,7 +210,7 @@ Promise.all([
       }
       for (let i = this._children.length - 1; i >= 0; i--) {
         const n = this._children[i];
-        t.has(i) || (n._accessibleDiv && n._accessibleDiv.parentNode && (n._accessibleDiv.parentNode.removeChild(n._accessibleDiv), this._pool.push(n._accessibleDiv), n._accessibleDiv = null), n._accessibleActive = false, J(this._children, i, 1));
+        t.has(i) || (n._accessibleDiv && n._accessibleDiv.parentNode && (n._accessibleDiv.parentNode.removeChild(n._accessibleDiv), this._pool.push(n._accessibleDiv), n._accessibleDiv = null), n._accessibleActive = false, Q(this._children, i, 1));
       }
       if (this._renderer.renderingToScreen) {
         const { x: i, y: n, width: s, height: o } = this._renderer.screen, r = this._div;
@@ -214,12 +221,12 @@ Promise.all([
         if (!n._accessibleActive || !n._accessibleDiv) continue;
         const s = n._accessibleDiv, o = n.hitArea || n.getBounds().rectangle;
         if (n.hitArea) {
-          const r = n.worldTransform, h = this._renderer.resolution, d = this._renderer.resolution;
-          s.style.left = `${(r.tx + o.x * r.a) * h}px`, s.style.top = `${(r.ty + o.y * r.d) * d}px`, s.style.width = `${o.width * r.a * h}px`, s.style.height = `${o.height * r.d * d}px`;
+          const r = n.worldTransform, l = this._renderer.resolution, c = this._renderer.resolution;
+          s.style.left = `${(r.tx + o.x * r.a) * l}px`, s.style.top = `${(r.ty + o.y * r.d) * c}px`, s.style.width = `${o.width * r.a * l}px`, s.style.height = `${o.height * r.d * c}px`;
         } else {
           this._capHitArea(o);
-          const r = this._renderer.resolution, h = this._renderer.resolution;
-          s.style.left = `${o.x * r}px`, s.style.top = `${o.y * h}px`, s.style.width = `${o.width * r}px`, s.style.height = `${o.height * h}px`;
+          const r = this._renderer.resolution, l = this._renderer.resolution;
+          s.style.left = `${o.x * r}px`, s.style.top = `${o.y * l}px`, s.style.width = `${o.width * r}px`, s.style.height = `${o.height * l}px`;
         }
       }
       this._renderId++;
@@ -247,10 +254,10 @@ Promise.all([
                         -webkit-user-select: none;
                         -moz-user-select: none;
                         -ms-user-select: none;
-                    `, e.accessibleText && (t.innerText = e.accessibleText)), t.style.width = `${M}px`, t.style.height = `${M}px`, t.style.backgroundColor = this.debug ? "rgba(255,255,255,0.5)" : "transparent", t.style.position = "absolute", t.style.zIndex = W.toString(), t.style.borderStyle = "none", navigator.userAgent.toLowerCase().includes("chrome") ? t.setAttribute("aria-live", "off") : t.setAttribute("aria-live", "polite"), navigator.userAgent.match(/rv:.*Gecko\//) ? t.setAttribute("aria-relevant", "additions") : t.setAttribute("aria-relevant", "text"), t.addEventListener("click", this._onClick.bind(this)), t.addEventListener("focus", this._onFocus.bind(this)), t.addEventListener("focusout", this._onFocusOut.bind(this))), t.style.pointerEvents = e.accessiblePointerEvents, t.type = e.accessibleType, e.accessibleTitle && e.accessibleTitle !== null ? t.title = e.accessibleTitle : (!e.accessibleHint || e.accessibleHint === null) && (t.title = `container ${e.tabIndex}`), e.accessibleHint && e.accessibleHint !== null && t.setAttribute("aria-label", e.accessibleHint), this.debug && this._updateDebugHTML(t), e._accessibleActive = true, e._accessibleDiv = t, t.container = e, this._children.push(e), this._div.appendChild(e._accessibleDiv), e.interactive && (e._accessibleDiv.tabIndex = e.tabIndex);
+                    `, e.accessibleText && (t.innerText = e.accessibleText)), t.style.width = `${A}px`, t.style.height = `${A}px`, t.style.backgroundColor = this.debug ? "rgba(255,255,255,0.5)" : "transparent", t.style.position = "absolute", t.style.zIndex = W.toString(), t.style.borderStyle = "none", navigator.userAgent.toLowerCase().includes("chrome") ? t.setAttribute("aria-live", "off") : t.setAttribute("aria-live", "polite"), navigator.userAgent.match(/rv:.*Gecko\//) ? t.setAttribute("aria-relevant", "additions") : t.setAttribute("aria-relevant", "text"), t.addEventListener("click", this._onClick.bind(this)), t.addEventListener("focus", this._onFocus.bind(this)), t.addEventListener("focusout", this._onFocusOut.bind(this))), t.style.pointerEvents = e.accessiblePointerEvents, t.type = e.accessibleType, e.accessibleTitle && e.accessibleTitle !== null ? t.title = e.accessibleTitle : (!e.accessibleHint || e.accessibleHint === null) && (t.title = `container ${e.tabIndex}`), e.accessibleHint && e.accessibleHint !== null && t.setAttribute("aria-label", e.accessibleHint), this.debug && this._updateDebugHTML(t), e._accessibleActive = true, e._accessibleDiv = t, t.container = e, this._children.push(e), this._div.appendChild(e._accessibleDiv), e.interactive && (e._accessibleDiv.tabIndex = e.tabIndex);
     }
     _dispatchEvent(e, t) {
-      const { container: i } = e.target, n = this._renderer.events.rootBoundary, s = Object.assign(new P(n), {
+      const { container: i } = e.target, n = this._renderer.events.rootBoundary, s = Object.assign(new w(n), {
         target: i
       });
       n.rootTarget = this._renderer.lastObjectRendered, t.forEach((o) => n.dispatchEvent(s, o));
@@ -273,7 +280,7 @@ Promise.all([
       ]);
     }
     _onKeyDown(e) {
-      e.keyCode !== se || !this._activateOnTab || this._activate();
+      e.keyCode !== oe || !this._activateOnTab || this._activate();
     }
     _onMouseMove(e) {
       e.movementX === 0 && e.movementY === 0 || this._deactivate();
@@ -287,8 +294,8 @@ Promise.all([
   };
   B.extension = {
     type: [
-      T.WebGLSystem,
-      T.WebGPUSystem
+      _.WebGLSystem,
+      _.WebGPUSystem
     ],
     name: "accessibility"
   };
@@ -299,7 +306,7 @@ Promise.all([
     deactivateOnMouseMove: true
   };
   let ce = B;
-  const de = {
+  const ue = {
     accessible: false,
     accessibleTitle: null,
     accessibleHint: null,
@@ -312,7 +319,59 @@ Promise.all([
     accessibleChildren: true,
     _renderId: -1
   };
-  class ue {
+  class q {
+    constructor(e) {
+      this._destroyRenderableBound = this.destroyRenderable.bind(this), this._attachedDomElements = [], this._renderer = e, this._renderer.runners.postrender.add(this), this._domElement = document.createElement("div"), this._domElement.style.position = "absolute", this._domElement.style.top = "0", this._domElement.style.left = "0", this._domElement.style.pointerEvents = "none", this._domElement.style.zIndex = "1000";
+    }
+    addRenderable(e, t) {
+      this._attachedDomElements.includes(e) || (this._attachedDomElements.push(e), e.on("destroyed", this._destroyRenderableBound));
+    }
+    updateRenderable(e) {
+    }
+    validateRenderable(e) {
+      return true;
+    }
+    destroyRenderable(e) {
+      const t = this._attachedDomElements.indexOf(e);
+      t !== -1 && this._attachedDomElements.splice(t, 1), e.off("destroyed", this._destroyRenderableBound);
+    }
+    postrender() {
+      var _a;
+      const e = this._attachedDomElements;
+      if (e.length === 0) {
+        this._domElement.remove();
+        return;
+      }
+      const t = this._renderer.view.canvas;
+      this._domElement.parentNode !== t.parentNode && ((_a = t.parentNode) == null ? void 0 : _a.appendChild(this._domElement)), this._domElement.style.transform = `translate(${t.offsetLeft}px, ${t.offsetTop}px)`;
+      for (let i = 0; i < e.length; i++) {
+        const n = e[i], s = n.element;
+        if (!n.parent || n.globalDisplayStatus < 7) s.remove(), e.splice(i, 1), i--;
+        else {
+          this._domElement.contains(s) || (s.style.position = "absolute", s.style.pointerEvents = "auto", this._domElement.appendChild(s));
+          const o = n.worldTransform, r = n._anchor, l = n.width * r.x, c = n.height * r.y;
+          s.style.transformOrigin = `${l}px ${c}px`, s.style.transform = `matrix(${o.a}, ${o.b}, ${o.c}, ${o.d}, ${o.tx - l}, ${o.ty - c})`, s.style.opacity = n.groupAlpha.toString();
+        }
+      }
+    }
+    destroy() {
+      this._renderer.runners.postrender.remove(this);
+      for (let e = 0; e < this._attachedDomElements.length; e++) {
+        const t = this._attachedDomElements[e];
+        t.off("destroyed", this._destroyRenderableBound), t.element.remove();
+      }
+      this._attachedDomElements.length = 0, this._domElement.remove(), this._renderer = null;
+    }
+  }
+  q.extension = {
+    type: [
+      _.WebGLPipes,
+      _.WebGPUPipes,
+      _.CanvasPipes
+    ],
+    name: "dom"
+  };
+  class pe {
     constructor() {
       this.interactionFrequency = 10, this._deltaTime = 0, this._didMove = false, this._tickerAdded = false, this._pauseUpdate = true;
     }
@@ -326,10 +385,10 @@ Promise.all([
       this._pauseUpdate = e;
     }
     addTickerListener() {
-      this._tickerAdded || !this.domElement || (S.system.add(this._tickerUpdate, this, Q.INTERACTION), this._tickerAdded = true);
+      this._tickerAdded || !this.domElement || (C.system.add(this._tickerUpdate, this, ee.INTERACTION), this._tickerAdded = true);
     }
     removeTickerListener() {
-      this._tickerAdded && (S.system.remove(this._tickerUpdate, this), this._tickerAdded = false);
+      this._tickerAdded && (C.system.remove(this._tickerUpdate, this), this._tickerAdded = false);
     }
     pointerMoved() {
       this._didMove = true;
@@ -352,8 +411,8 @@ Promise.all([
       this._deltaTime += e.deltaTime, !(this._deltaTime < this.interactionFrequency) && (this._deltaTime = 0, this._update());
     }
   }
-  const y = new ue();
-  class A extends P {
+  const y = new pe();
+  class D extends w {
     constructor() {
       super(...arguments), this.client = new f(), this.movement = new f(), this.offset = new f(), this.global = new f(), this.screen = new f();
     }
@@ -399,11 +458,11 @@ Promise.all([
     getModifierState(e) {
       return "getModifierState" in this.nativeEvent && this.nativeEvent.getModifierState(e);
     }
-    initMouseEvent(e, t, i, n, s, o, r, h, d, l, g, c, p, D, _e) {
+    initMouseEvent(e, t, i, n, s, o, r, l, c, h, m, d, p, O, be) {
       throw new Error("Method not implemented.");
     }
   }
-  class u extends A {
+  class u extends D {
     constructor() {
       super(...arguments), this.width = 0, this.height = 0, this.isPrimary = false;
     }
@@ -416,18 +475,18 @@ Promise.all([
       throw new Error("getPredictedEvents is not supported!");
     }
   }
-  class b extends A {
+  class E extends D {
     constructor() {
       super(...arguments), this.DOM_DELTA_PIXEL = 0, this.DOM_DELTA_LINE = 1, this.DOM_DELTA_PAGE = 2;
     }
   }
-  b.DOM_DELTA_PIXEL = 0;
-  b.DOM_DELTA_LINE = 1;
-  b.DOM_DELTA_PAGE = 2;
-  const pe = 2048, ve = new f(), E = new f();
-  class fe {
+  E.DOM_DELTA_PIXEL = 0;
+  E.DOM_DELTA_LINE = 1;
+  E.DOM_DELTA_PAGE = 2;
+  const ve = 2048, fe = new f(), T = new f();
+  class me {
     constructor(e) {
-      this.dispatch = new ee(), this.moveOnAll = false, this.enableGlobalMoveEvents = true, this.mappingState = {
+      this.dispatch = new te(), this.moveOnAll = false, this.enableGlobalMoveEvents = true, this.mappingState = {
         trackingData: {}
       }, this.eventPool = /* @__PURE__ */ new Map(), this._allInteractiveElements = [], this._hitElements = [], this._isPointerMoveEvent = false, this.rootTarget = e, this.hitPruneFn = this.hitPruneFn.bind(this), this.hitTestFn = this.hitTestFn.bind(this), this.mapPointerDown = this.mapPointerDown.bind(this), this.mapPointerMove = this.mapPointerMove.bind(this), this.mapPointerOut = this.mapPointerOut.bind(this), this.mapPointerOver = this.mapPointerOver.bind(this), this.mapPointerUp = this.mapPointerUp.bind(this), this.mapPointerUpOutside = this.mapPointerUpOutside.bind(this), this.mapWheel = this.mapWheel.bind(this), this.mappingTable = {}, this.addEventMapping("pointerdown", this.mapPointerDown), this.addEventMapping("pointermove", this.mapPointerMove), this.addEventMapping("pointerout", this.mapPointerOut), this.addEventMapping("pointerleave", this.mapPointerOut), this.addEventMapping("pointerover", this.mapPointerOver), this.addEventMapping("pointerup", this.mapPointerUp), this.addEventMapping("pointerupoutside", this.mapPointerUpOutside), this.addEventMapping("wheel", this.mapWheel);
     }
@@ -444,11 +503,11 @@ Promise.all([
       if (!this.rootTarget) return;
       const t = this.mappingTable[e.type];
       if (t) for (let i = 0, n = t.length; i < n; i++) t[i].fn(e);
-      else m(`[EventBoundary]: Event mapping not defined for ${e.type}`);
+      else g(`[EventBoundary]: Event mapping not defined for ${e.type}`);
     }
     hitTest(e, t) {
       y.pauseUpdate = true;
-      const n = this._isPointerMoveEvent && this.enableGlobalMoveEvents ? "hitTestMoveRecursive" : "hitTestRecursive", s = this[n](this.rootTarget, this.rootTarget.eventMode, ve.set(e, t), this.hitTestFn, this.hitPruneFn);
+      const n = this._isPointerMoveEvent && this.enableGlobalMoveEvents ? "hitTestMoveRecursive" : "hitTestRecursive", s = this[n](this.rootTarget, this.rootTarget.eventMode, fe.set(e, t), this.hitTestFn, this.hitPruneFn);
       return s && s[0];
     }
     propagate(e, t) {
@@ -475,7 +534,7 @@ Promise.all([
       const t = [
         e
       ];
-      for (let i = 0; i < pe && e !== this.rootTarget && e.parent; i++) {
+      for (let i = 0; i < ve && e !== this.rootTarget && e.parent; i++) {
         if (!e.parent) throw new Error("Cannot find propagation path to disconnected target");
         t.push(e.parent), e = e.parent;
       }
@@ -485,31 +544,31 @@ Promise.all([
       let r = false;
       if (this._interactivePrune(e)) return null;
       if ((e.eventMode === "dynamic" || t === "dynamic") && (y.pauseUpdate = false), e.interactiveChildren && e.children) {
-        const l = e.children;
-        for (let g = l.length - 1; g >= 0; g--) {
-          const c = l[g], p = this.hitTestMoveRecursive(c, this._isInteractive(t) ? t : c.eventMode, i, n, s, o || s(e, i));
+        const h = e.children;
+        for (let m = h.length - 1; m >= 0; m--) {
+          const d = h[m], p = this.hitTestMoveRecursive(d, this._isInteractive(t) ? t : d.eventMode, i, n, s, o || s(e, i));
           if (p) {
             if (p.length > 0 && !p[p.length - 1].parent) continue;
-            const D = e.isInteractive();
-            (p.length > 0 || D) && (D && this._allInteractiveElements.push(e), p.push(e)), this._hitElements.length === 0 && (this._hitElements = p), r = true;
+            const O = e.isInteractive();
+            (p.length > 0 || O) && (O && this._allInteractiveElements.push(e), p.push(e)), this._hitElements.length === 0 && (this._hitElements = p), r = true;
           }
         }
       }
-      const h = this._isInteractive(t), d = e.isInteractive();
-      return d && d && this._allInteractiveElements.push(e), o || this._hitElements.length > 0 ? null : r ? this._hitElements : h && !s(e, i) && n(e, i) ? d ? [
+      const l = this._isInteractive(t), c = e.isInteractive();
+      return c && c && this._allInteractiveElements.push(e), o || this._hitElements.length > 0 ? null : r ? this._hitElements : l && !s(e, i) && n(e, i) ? c ? [
         e
       ] : [] : null;
     }
     hitTestRecursive(e, t, i, n, s) {
       if (this._interactivePrune(e) || s(e, i)) return null;
       if ((e.eventMode === "dynamic" || t === "dynamic") && (y.pauseUpdate = false), e.interactiveChildren && e.children) {
-        const h = e.children, d = i;
-        for (let l = h.length - 1; l >= 0; l--) {
-          const g = h[l], c = this.hitTestRecursive(g, this._isInteractive(t) ? t : g.eventMode, d, n, s);
-          if (c) {
-            if (c.length > 0 && !c[c.length - 1].parent) continue;
+        const l = e.children, c = i;
+        for (let h = l.length - 1; h >= 0; h--) {
+          const m = l[h], d = this.hitTestRecursive(m, this._isInteractive(t) ? t : m.eventMode, c, n, s);
+          if (d) {
+            if (d.length > 0 && !d[d.length - 1].parent) continue;
             const p = e.isInteractive();
-            return (c.length > 0 || p) && c.push(e), c;
+            return (d.length > 0 || p) && d.push(e), d;
           }
         }
       }
@@ -525,7 +584,7 @@ Promise.all([
       return !e || !e.visible || !e.renderable || !e.measurable || e.eventMode === "none" || e.eventMode === "passive" && !e.interactiveChildren;
     }
     hitPruneFn(e, t) {
-      if (e.hitArea && (e.worldTransform.applyInverse(t, E), !e.hitArea.contains(E.x, E.y))) return true;
+      if (e.hitArea && (e.worldTransform.applyInverse(t, T), !e.hitArea.contains(T.x, T.y))) return true;
       if (e.effects && e.effects.length) for (let i = 0; i < e.effects.length; i++) {
         const n = e.effects[i];
         if (n.containsPoint && !n.containsPoint(t, this.hitTestFn)) return true;
@@ -533,7 +592,7 @@ Promise.all([
       return false;
     }
     hitTestFn(e, t) {
-      return e.hitArea ? true : (e == null ? void 0 : e.containsPoint) ? (e.worldTransform.applyInverse(t, E), e.containsPoint(E)) : false;
+      return e.hitArea ? true : (e == null ? void 0 : e.containsPoint) ? (e.worldTransform.applyInverse(t, T), e.containsPoint(T)) : false;
     }
     notifyTarget(e, t) {
       var _a, _b;
@@ -546,7 +605,7 @@ Promise.all([
     }
     mapPointerDown(e) {
       if (!(e instanceof u)) {
-        m("EventBoundary cannot map a non-pointer event as a pointer event");
+        g("EventBoundary cannot map a non-pointer event as a pointer event");
         return;
       }
       const t = this.createPointerEvent(e);
@@ -561,7 +620,7 @@ Promise.all([
     mapPointerMove(e) {
       var _a, _b;
       if (!(e instanceof u)) {
-        m("EventBoundary cannot map a non-pointer event as a pointer event");
+        g("EventBoundary cannot map a non-pointer event as a pointer event");
         return;
       }
       this._allInteractiveElements.length = 0, this._hitElements.length = 0, this._isPointerMoveEvent = true;
@@ -569,25 +628,25 @@ Promise.all([
       this._isPointerMoveEvent = false;
       const i = t.pointerType === "mouse" || t.pointerType === "pen", n = this.trackingData(e.pointerId), s = this.findMountedTarget(n.overTargets);
       if (((_a = n.overTargets) == null ? void 0 : _a.length) > 0 && s !== t.target) {
-        const h = e.type === "mousemove" ? "mouseout" : "pointerout", d = this.createPointerEvent(e, h, s);
-        if (this.dispatchEvent(d, "pointerout"), i && this.dispatchEvent(d, "mouseout"), !t.composedPath().includes(s)) {
-          const l = this.createPointerEvent(e, "pointerleave", s);
-          for (l.eventPhase = l.AT_TARGET; l.target && !t.composedPath().includes(l.target); ) l.currentTarget = l.target, this.notifyTarget(l), i && this.notifyTarget(l, "mouseleave"), l.target = l.target.parent;
-          this.freeEvent(l);
+        const l = e.type === "mousemove" ? "mouseout" : "pointerout", c = this.createPointerEvent(e, l, s);
+        if (this.dispatchEvent(c, "pointerout"), i && this.dispatchEvent(c, "mouseout"), !t.composedPath().includes(s)) {
+          const h = this.createPointerEvent(e, "pointerleave", s);
+          for (h.eventPhase = h.AT_TARGET; h.target && !t.composedPath().includes(h.target); ) h.currentTarget = h.target, this.notifyTarget(h), i && this.notifyTarget(h, "mouseleave"), h.target = h.target.parent;
+          this.freeEvent(h);
         }
-        this.freeEvent(d);
+        this.freeEvent(c);
       }
       if (s !== t.target) {
-        const h = e.type === "mousemove" ? "mouseover" : "pointerover", d = this.clonePointerEvent(t, h);
-        this.dispatchEvent(d, "pointerover"), i && this.dispatchEvent(d, "mouseover");
-        let l = s == null ? void 0 : s.parent;
-        for (; l && l !== this.rootTarget.parent && l !== t.target; ) l = l.parent;
-        if (!l || l === this.rootTarget.parent) {
-          const c = this.clonePointerEvent(t, "pointerenter");
-          for (c.eventPhase = c.AT_TARGET; c.target && c.target !== s && c.target !== this.rootTarget.parent; ) c.currentTarget = c.target, this.notifyTarget(c), i && this.notifyTarget(c, "mouseenter"), c.target = c.target.parent;
-          this.freeEvent(c);
+        const l = e.type === "mousemove" ? "mouseover" : "pointerover", c = this.clonePointerEvent(t, l);
+        this.dispatchEvent(c, "pointerover"), i && this.dispatchEvent(c, "mouseover");
+        let h = s == null ? void 0 : s.parent;
+        for (; h && h !== this.rootTarget.parent && h !== t.target; ) h = h.parent;
+        if (!h || h === this.rootTarget.parent) {
+          const d = this.clonePointerEvent(t, "pointerenter");
+          for (d.eventPhase = d.AT_TARGET; d.target && d.target !== s && d.target !== this.rootTarget.parent; ) d.currentTarget = d.target, this.notifyTarget(d), i && this.notifyTarget(d, "mouseenter"), d.target = d.target.parent;
+          this.freeEvent(d);
         }
-        this.freeEvent(d);
+        this.freeEvent(c);
       }
       const o = [], r = this.enableGlobalMoveEvents ?? true;
       this.moveOnAll ? o.push("pointermove") : this.dispatchEvent(t, "pointermove"), r && o.push("globalpointermove"), t.pointerType === "touch" && (this.moveOnAll ? o.splice(1, 0, "touchmove") : this.dispatchEvent(t, "touchmove"), r && o.push("globaltouchmove")), i && (this.moveOnAll ? o.splice(1, 0, "mousemove") : this.dispatchEvent(t, "mousemove"), r && o.push("globalmousemove"), this.cursor = (_b = t.target) == null ? void 0 : _b.cursor), o.length > 0 && this.all(t, o), this._allInteractiveElements.length = 0, this._hitElements.length = 0, n.overTargets = t.composedPath(), this.freeEvent(t);
@@ -595,7 +654,7 @@ Promise.all([
     mapPointerOver(e) {
       var _a;
       if (!(e instanceof u)) {
-        m("EventBoundary cannot map a non-pointer event as a pointer event");
+        g("EventBoundary cannot map a non-pointer event as a pointer event");
         return;
       }
       const t = this.trackingData(e.pointerId), i = this.createPointerEvent(e), n = i.pointerType === "mouse" || i.pointerType === "pen";
@@ -606,7 +665,7 @@ Promise.all([
     }
     mapPointerOut(e) {
       if (!(e instanceof u)) {
-        m("EventBoundary cannot map a non-pointer event as a pointer event");
+        g("EventBoundary cannot map a non-pointer event as a pointer event");
         return;
       }
       const t = this.trackingData(e.pointerId);
@@ -621,7 +680,7 @@ Promise.all([
     }
     mapPointerUp(e) {
       if (!(e instanceof u)) {
-        m("EventBoundary cannot map a non-pointer event as a pointer event");
+        g("EventBoundary cannot map a non-pointer event as a pointer event");
         return;
       }
       const t = performance.now(), i = this.createPointerEvent(e);
@@ -637,8 +696,8 @@ Promise.all([
         for (; r && !i.composedPath().includes(r); ) {
           if (i.currentTarget = r, this.notifyTarget(i, "pointerupoutside"), i.pointerType === "touch") this.notifyTarget(i, "touchendoutside");
           else if (i.pointerType === "mouse" || i.pointerType === "pen") {
-            const h = i.button === 2;
-            this.notifyTarget(i, h ? "rightupoutside" : "mouseupoutside");
+            const l = i.button === 2;
+            this.notifyTarget(i, l ? "rightupoutside" : "mouseupoutside");
           }
           r = r.parent;
         }
@@ -651,10 +710,10 @@ Promise.all([
           target: r.target,
           timeStamp: t
         });
-        const h = n.clicksByButton[e.button];
-        if (h.target === r.target && t - h.timeStamp < 200 ? ++h.clickCount : h.clickCount = 1, h.target = r.target, h.timeStamp = t, r.detail = h.clickCount, r.pointerType === "mouse") {
-          const d = r.button === 2;
-          this.dispatchEvent(r, d ? "rightclick" : "click");
+        const l = n.clicksByButton[e.button];
+        if (l.target === r.target && t - l.timeStamp < 200 ? ++l.clickCount : l.clickCount = 1, l.target = r.target, l.timeStamp = t, r.detail = l.clickCount, r.pointerType === "mouse") {
+          const c = r.button === 2;
+          this.dispatchEvent(r, c ? "rightclick" : "click");
         } else r.pointerType === "touch" && this.dispatchEvent(r, "tap");
         this.dispatchEvent(r, "pointertap"), this.freeEvent(r);
       }
@@ -662,7 +721,7 @@ Promise.all([
     }
     mapPointerUpOutside(e) {
       if (!(e instanceof u)) {
-        m("EventBoundary cannot map a non-pointer event as a pointer event");
+        g("EventBoundary cannot map a non-pointer event as a pointer event");
         return;
       }
       const t = this.trackingData(e.pointerId), i = this.findMountedTarget(t.pressTargetsByButton[e.button]), n = this.createPointerEvent(e);
@@ -674,8 +733,8 @@ Promise.all([
       this.freeEvent(n);
     }
     mapWheel(e) {
-      if (!(e instanceof b)) {
-        m("EventBoundary cannot map a non-wheel event as a wheel event");
+      if (!(e instanceof E)) {
+        g("EventBoundary cannot map a non-wheel event as a wheel event");
         return;
       }
       const t = this.createWheelEvent(e);
@@ -692,7 +751,7 @@ Promise.all([
       return this.copyPointerData(e, n), this.copyMouseData(e, n), this.copyData(e, n), n.nativeEvent = e.nativeEvent, n.originalEvent = e, n.target = i ?? this.hitTest(n.global.x, n.global.y) ?? this._hitElements[0], typeof t == "string" && (n.type = t), n;
     }
     createWheelEvent(e) {
-      const t = this.allocateEvent(b);
+      const t = this.allocateEvent(E);
       return this.copyWheelData(e, t), this.copyMouseData(e, t), this.copyData(e, t), t.nativeEvent = e.nativeEvent, t.originalEvent = e, t.target = this.hitTest(t.global.x, t.global.y), t;
     }
     clonePointerEvent(e, t) {
@@ -706,7 +765,7 @@ Promise.all([
       e instanceof u && t instanceof u && (t.pointerId = e.pointerId, t.width = e.width, t.height = e.height, t.isPrimary = e.isPrimary, t.pointerType = e.pointerType, t.pressure = e.pressure, t.tangentialPressure = e.tangentialPressure, t.tiltX = e.tiltX, t.tiltY = e.tiltY, t.twist = e.twist);
     }
     copyMouseData(e, t) {
-      e instanceof A && t instanceof A && (t.altKey = e.altKey, t.button = e.button, t.buttons = e.buttons, t.client.copyFrom(e.client), t.ctrlKey = e.ctrlKey, t.metaKey = e.metaKey, t.movement.copyFrom(e.movement), t.screen.copyFrom(e.screen), t.shiftKey = e.shiftKey, t.global.copyFrom(e.global));
+      e instanceof D && t instanceof D && (t.altKey = e.altKey, t.button = e.button, t.buttons = e.buttons, t.client.copyFrom(e.client), t.ctrlKey = e.ctrlKey, t.metaKey = e.metaKey, t.movement.copyFrom(e.movement), t.screen.copyFrom(e.screen), t.shiftKey = e.shiftKey, t.global.copyFrom(e.global));
     }
     copyData(e, t) {
       t.isTrusted = e.isTrusted, t.srcElement = e.srcElement, t.timeStamp = performance.now(), t.type = e.type, t.detail = e.detail, t.view = e.view, t.which = e.which, t.layer.copyFrom(e.layer), t.page.copyFrom(e.page);
@@ -734,19 +793,19 @@ Promise.all([
       else for (let n = 0, s = i.length; n < s && !e.propagationImmediatelyStopped; n++) i[n].once && e.currentTarget.removeListener(t, i[n].fn, void 0, true), i[n].fn.call(i[n].context, e);
     }
   }
-  const ge = 1, me = {
+  const ge = 1, ye = {
     touchstart: "pointerdown",
     touchend: "pointerup",
     touchendoutside: "pointerupoutside",
     touchmove: "pointermove",
     touchcancel: "pointercancel"
-  }, L = class x {
+  }, L = class k {
     constructor(e) {
-      this.supportsTouchEvents = "ontouchstart" in globalThis, this.supportsPointerEvents = !!globalThis.PointerEvent, this.domElement = null, this.resolution = 1, this.renderer = e, this.rootBoundary = new fe(null), y.init(this), this.autoPreventDefault = true, this._eventsAdded = false, this._rootPointerEvent = new u(null), this._rootWheelEvent = new b(null), this.cursorStyles = {
+      this.supportsTouchEvents = "ontouchstart" in globalThis, this.supportsPointerEvents = !!globalThis.PointerEvent, this.domElement = null, this.resolution = 1, this.renderer = e, this.rootBoundary = new me(null), y.init(this), this.autoPreventDefault = true, this._eventsAdded = false, this._rootPointerEvent = new u(null), this._rootWheelEvent = new E(null), this.cursorStyles = {
         default: "inherit",
         pointer: "pointer"
       }, this.features = new Proxy({
-        ...x.defaultEventFeatures
+        ...k.defaultEventFeatures
       }, {
         set: (t, i, n) => (i === "globalMove" && (this.rootBoundary.enableGlobalMoveEvents = n), t[i] = n, true)
       }), this._onPointerDown = this._onPointerDown.bind(this), this._onPointerMove = this._onPointerMove.bind(this), this._onPointerUp = this._onPointerUp.bind(this), this._onPointerOverOut = this._onPointerOverOut.bind(this), this.onWheel = this.onWheel.bind(this);
@@ -756,7 +815,7 @@ Promise.all([
     }
     init(e) {
       const { canvas: t, resolution: i } = this.renderer;
-      this.setTargetElement(t), this.resolution = i, x._defaultEventMode = e.eventMode ?? "passive", Object.assign(this.features, e.eventFeatures ?? {}), this.rootBoundary.enableGlobalMoveEvents = this.features.globalMove;
+      this.setTargetElement(t), this.resolution = i, k._defaultEventMode = e.eventMode ?? "passive", Object.assign(this.features, e.eventFeatures ?? {}), this.rootBoundary.enableGlobalMoveEvents = this.features.globalMove;
     }
     resolutionChange(e) {
       this.resolution = e;
@@ -878,7 +937,7 @@ Promise.all([
       return this._transferMouseData(t, e), t.deltaX = e.deltaX, t.deltaY = e.deltaY, t.deltaZ = e.deltaZ, t.deltaMode = e.deltaMode, this.mapPositionToPoint(t.screen, e.clientX, e.clientY), t.global.copyFrom(t.screen), t.offset.copyFrom(t.screen), t.nativeEvent = e, t.type = e.type, t;
     }
     _bootstrapEvent(e, t) {
-      return e.originalEvent = null, e.nativeEvent = t, e.pointerId = t.pointerId, e.width = t.width, e.height = t.height, e.isPrimary = t.isPrimary, e.pointerType = t.pointerType, e.pressure = t.pressure, e.tangentialPressure = t.tangentialPressure, e.tiltX = t.tiltX, e.tiltY = t.tiltY, e.twist = t.twist, this._transferMouseData(e, t), this.mapPositionToPoint(e.screen, t.clientX, t.clientY), e.global.copyFrom(e.screen), e.offset.copyFrom(e.screen), e.isTrusted = t.isTrusted, e.type === "pointerleave" && (e.type = "pointerout"), e.type.startsWith("mouse") && (e.type = e.type.replace("mouse", "pointer")), e.type.startsWith("touch") && (e.type = me[e.type] || e.type), e;
+      return e.originalEvent = null, e.nativeEvent = t, e.pointerId = t.pointerId, e.width = t.width, e.height = t.height, e.isPrimary = t.isPrimary, e.pointerType = t.pointerType, e.pressure = t.pressure, e.tangentialPressure = t.tangentialPressure, e.tiltX = t.tiltX, e.tiltY = t.tiltY, e.twist = t.twist, this._transferMouseData(e, t), this.mapPositionToPoint(e.screen, t.clientX, t.clientY), e.global.copyFrom(e.screen), e.offset.copyFrom(e.screen), e.isTrusted = t.isTrusted, e.type === "pointerleave" && (e.type = "pointerout"), e.type.startsWith("mouse") && (e.type = e.type.replace("mouse", "pointer")), e.type.startsWith("touch") && (e.type = ye[e.type] || e.type), e;
     }
     _transferMouseData(e, t) {
       e.isTrusted = t.isTrusted, e.srcElement = t.srcElement, e.timeStamp = performance.now(), e.type = t.type, e.altKey = t.altKey, e.button = t.button, e.buttons = t.buttons, e.client.x = t.clientX, e.client.y = t.clientY, e.ctrlKey = t.ctrlKey, e.metaKey = t.metaKey, e.movement.x = t.movementX, e.movement.y = t.movementY, e.page.x = t.pageX, e.page.y = t.pageY, e.relatedTarget = null, e.shiftKey = t.shiftKey;
@@ -887,9 +946,9 @@ Promise.all([
   L.extension = {
     name: "events",
     type: [
-      T.WebGLSystem,
-      T.CanvasSystem,
-      T.WebGPUSystem
+      _.WebGLSystem,
+      _.CanvasSystem,
+      _.WebGPUSystem
     ],
     priority: -1
   };
@@ -899,8 +958,8 @@ Promise.all([
     click: true,
     wheel: true
   };
-  let q = L;
-  const ye = {
+  let J = L;
+  const _e = {
     onclick: null,
     onmousedown: null,
     onmouseenter: null,
@@ -942,7 +1001,7 @@ Promise.all([
     },
     _internalEventMode: void 0,
     get eventMode() {
-      return this._internalEventMode ?? q.defaultEventMode;
+      return this._internalEventMode ?? J.defaultEventMode;
     },
     set eventMode(a) {
       this._internalEventMode = a;
@@ -955,22 +1014,23 @@ Promise.all([
     addEventListener(a, e, t) {
       const i = typeof t == "boolean" && t || typeof t == "object" && t.capture, n = typeof t == "object" ? t.signal : void 0, s = typeof t == "object" ? t.once === true : false, o = typeof e == "function" ? void 0 : e;
       a = i ? `${a}capture` : a;
-      const r = typeof e == "function" ? e : e.handleEvent, h = this;
+      const r = typeof e == "function" ? e : e.handleEvent, l = this;
       n && n.addEventListener("abort", () => {
-        h.off(a, r, o);
-      }), s ? h.once(a, r, o) : h.on(a, r, o);
+        l.off(a, r, o);
+      }), s ? l.once(a, r, o) : l.on(a, r, o);
     },
     removeEventListener(a, e, t) {
       const i = typeof t == "boolean" && t || typeof t == "object" && t.capture, n = typeof e == "function" ? void 0 : e;
       a = i ? `${a}capture` : a, e = typeof e == "function" ? e : e.handleEvent, this.off(a, e, n);
     },
     dispatchEvent(a) {
-      if (!(a instanceof P)) throw new Error("Container cannot propagate events outside of the Federated Events API");
+      if (!(a instanceof w)) throw new Error("Container cannot propagate events outside of the Federated Events API");
       return a.defaultPrevented = false, a.path = null, a.target = this, a.manager.dispatchEvent(a), !a.defaultPrevented;
     }
   };
-  O.add(ce);
-  O.mixin(Z, de);
-  O.add(q);
-  O.mixin(Z, ye);
+  P.add(ce);
+  P.mixin(Z, ue);
+  P.add(J);
+  P.mixin(Z, _e);
+  P.add(q);
 });

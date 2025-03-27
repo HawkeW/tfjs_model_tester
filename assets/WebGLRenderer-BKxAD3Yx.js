@@ -1,7 +1,8 @@
-import { E as d, B as T, w as m, D as S, K as j, u as Te, s as G, t as b, a4 as Be, j as K, S as p, O as L, i as B, h as A, k as U, q as $, M as z, a5 as Y, a6 as Ae, a7 as Ne, a8 as q, a9 as ye, A as Ie, R as De, e as x, __tla as __tla_0 } from "./ModelPerformanceTest-CoXpsfai.js";
-import { S as O, b as Z } from "./colorToUniform-C2GHuDhf.js";
-import { e as Ce, G as Ge, c as Ue, b as Oe, U as Pe, R as Fe, B as Q, d as N, f as Me, S as Le, a as He, __tla as __tla_1 } from "./SharedSystems-DLjwGstu.js";
-import { __tla as __tla_2 } from "./index-qfyYY3AK.js";
+import { E as d, B as T, w as m, D as S, K as j, u as Te, s as G, t as b, a4 as Be, j as K, S as p, O as L, i as B, h as A, k as U, q as $, M as z, a5 as Y, a6 as Ae, a7 as Ne, a8 as q, a9 as ye, A as De, R as Ce, e as x, __tla as __tla_0 } from "./ModelPerformanceTest-zQ3DIqG6.js";
+import { S as F, b as Z } from "./colorToUniform-C2GHuDhf.js";
+import { e as Ie, G as Ge, c as Ue, b as Fe, U as Oe, R as Pe, B as Q, d as N, f as Me, S as Le, a as He, __tla as __tla_1 } from "./SharedSystems-CsCF3qDc.js";
+import { __tla as __tla_2 } from "./index-C_KNhBjg.js";
+import { __tla as __tla_3 } from "./base-D4gcL655.js";
 let Pt;
 let __tla = Promise.all([
   (() => {
@@ -21,11 +22,17 @@ let __tla = Promise.all([
       return __tla_2;
     } catch {
     }
+  })(),
+  (() => {
+    try {
+      return __tla_3;
+    } catch {
+    }
   })()
 ]).then(async () => {
   class J {
     constructor() {
-      this._tempState = O.for2d(), this._didUploadHash = {};
+      this._tempState = F.for2d(), this._didUploadHash = {};
     }
     init(e) {
       e.renderer.runners.contextChange.add(this);
@@ -138,7 +145,7 @@ let __tla = Promise.all([
     ],
     name: "buffer"
   };
-  const P = class te {
+  const O = class te {
     constructor(e) {
       this.supports = {
         uint32Indices: true,
@@ -238,7 +245,7 @@ let __tla = Promise.all([
       }, 0));
     }
     handleContextRestored() {
-      this._renderer.runners.contextChange.emit(this.gl);
+      this.getExtensions(), this._renderer.runners.contextChange.emit(this.gl);
     }
     destroy() {
       var _a;
@@ -256,13 +263,13 @@ let __tla = Promise.all([
       s.uint32Indices = n || !!i.uint32ElementIndex, s.uniformBufferObject = n, s.vertexArrayObject = n || !!i.vertexArrayObject, s.srgbTextures = n || !!i.srgb, s.nonPowOf2wrapping = n, s.nonPowOf2mipmaps = n, s.msaa = n, s.uint32Indices || m("Provided WebGL context does not support 32 index buffer, large scenes may not render correctly");
     }
   };
-  P.extension = {
+  O.extension = {
     type: [
       d.WebGLSystem
     ],
     name: "context"
   };
-  P.defaultOptions = {
+  O.defaultOptions = {
     context: null,
     premultipliedAlpha: true,
     preserveDrawingBuffer: false,
@@ -270,8 +277,8 @@ let __tla = Promise.all([
     preferWebGLVersion: 2,
     multiView: false
   };
-  let Ve = P;
-  var D = ((t) => (t[t.RGBA = 6408] = "RGBA", t[t.RGB = 6407] = "RGB", t[t.RG = 33319] = "RG", t[t.RED = 6403] = "RED", t[t.RGBA_INTEGER = 36249] = "RGBA_INTEGER", t[t.RGB_INTEGER = 36248] = "RGB_INTEGER", t[t.RG_INTEGER = 33320] = "RG_INTEGER", t[t.RED_INTEGER = 36244] = "RED_INTEGER", t[t.ALPHA = 6406] = "ALPHA", t[t.LUMINANCE = 6409] = "LUMINANCE", t[t.LUMINANCE_ALPHA = 6410] = "LUMINANCE_ALPHA", t[t.DEPTH_COMPONENT = 6402] = "DEPTH_COMPONENT", t[t.DEPTH_STENCIL = 34041] = "DEPTH_STENCIL", t))(D || {}), re = ((t) => (t[t.TEXTURE_2D = 3553] = "TEXTURE_2D", t[t.TEXTURE_CUBE_MAP = 34067] = "TEXTURE_CUBE_MAP", t[t.TEXTURE_2D_ARRAY = 35866] = "TEXTURE_2D_ARRAY", t[t.TEXTURE_CUBE_MAP_POSITIVE_X = 34069] = "TEXTURE_CUBE_MAP_POSITIVE_X", t[t.TEXTURE_CUBE_MAP_NEGATIVE_X = 34070] = "TEXTURE_CUBE_MAP_NEGATIVE_X", t[t.TEXTURE_CUBE_MAP_POSITIVE_Y = 34071] = "TEXTURE_CUBE_MAP_POSITIVE_Y", t[t.TEXTURE_CUBE_MAP_NEGATIVE_Y = 34072] = "TEXTURE_CUBE_MAP_NEGATIVE_Y", t[t.TEXTURE_CUBE_MAP_POSITIVE_Z = 34073] = "TEXTURE_CUBE_MAP_POSITIVE_Z", t[t.TEXTURE_CUBE_MAP_NEGATIVE_Z = 34074] = "TEXTURE_CUBE_MAP_NEGATIVE_Z", t))(re || {}), f = ((t) => (t[t.UNSIGNED_BYTE = 5121] = "UNSIGNED_BYTE", t[t.UNSIGNED_SHORT = 5123] = "UNSIGNED_SHORT", t[t.UNSIGNED_SHORT_5_6_5 = 33635] = "UNSIGNED_SHORT_5_6_5", t[t.UNSIGNED_SHORT_4_4_4_4 = 32819] = "UNSIGNED_SHORT_4_4_4_4", t[t.UNSIGNED_SHORT_5_5_5_1 = 32820] = "UNSIGNED_SHORT_5_5_5_1", t[t.UNSIGNED_INT = 5125] = "UNSIGNED_INT", t[t.UNSIGNED_INT_10F_11F_11F_REV = 35899] = "UNSIGNED_INT_10F_11F_11F_REV", t[t.UNSIGNED_INT_2_10_10_10_REV = 33640] = "UNSIGNED_INT_2_10_10_10_REV", t[t.UNSIGNED_INT_24_8 = 34042] = "UNSIGNED_INT_24_8", t[t.UNSIGNED_INT_5_9_9_9_REV = 35902] = "UNSIGNED_INT_5_9_9_9_REV", t[t.BYTE = 5120] = "BYTE", t[t.SHORT = 5122] = "SHORT", t[t.INT = 5124] = "INT", t[t.FLOAT = 5126] = "FLOAT", t[t.FLOAT_32_UNSIGNED_INT_24_8_REV = 36269] = "FLOAT_32_UNSIGNED_INT_24_8_REV", t[t.HALF_FLOAT = 36193] = "HALF_FLOAT", t))(f || {});
+  let Ve = O;
+  var C = ((t) => (t[t.RGBA = 6408] = "RGBA", t[t.RGB = 6407] = "RGB", t[t.RG = 33319] = "RG", t[t.RED = 6403] = "RED", t[t.RGBA_INTEGER = 36249] = "RGBA_INTEGER", t[t.RGB_INTEGER = 36248] = "RGB_INTEGER", t[t.RG_INTEGER = 33320] = "RG_INTEGER", t[t.RED_INTEGER = 36244] = "RED_INTEGER", t[t.ALPHA = 6406] = "ALPHA", t[t.LUMINANCE = 6409] = "LUMINANCE", t[t.LUMINANCE_ALPHA = 6410] = "LUMINANCE_ALPHA", t[t.DEPTH_COMPONENT = 6402] = "DEPTH_COMPONENT", t[t.DEPTH_STENCIL = 34041] = "DEPTH_STENCIL", t))(C || {}), re = ((t) => (t[t.TEXTURE_2D = 3553] = "TEXTURE_2D", t[t.TEXTURE_CUBE_MAP = 34067] = "TEXTURE_CUBE_MAP", t[t.TEXTURE_2D_ARRAY = 35866] = "TEXTURE_2D_ARRAY", t[t.TEXTURE_CUBE_MAP_POSITIVE_X = 34069] = "TEXTURE_CUBE_MAP_POSITIVE_X", t[t.TEXTURE_CUBE_MAP_NEGATIVE_X = 34070] = "TEXTURE_CUBE_MAP_NEGATIVE_X", t[t.TEXTURE_CUBE_MAP_POSITIVE_Y = 34071] = "TEXTURE_CUBE_MAP_POSITIVE_Y", t[t.TEXTURE_CUBE_MAP_NEGATIVE_Y = 34072] = "TEXTURE_CUBE_MAP_NEGATIVE_Y", t[t.TEXTURE_CUBE_MAP_POSITIVE_Z = 34073] = "TEXTURE_CUBE_MAP_POSITIVE_Z", t[t.TEXTURE_CUBE_MAP_NEGATIVE_Z = 34074] = "TEXTURE_CUBE_MAP_NEGATIVE_Z", t))(re || {}), f = ((t) => (t[t.UNSIGNED_BYTE = 5121] = "UNSIGNED_BYTE", t[t.UNSIGNED_SHORT = 5123] = "UNSIGNED_SHORT", t[t.UNSIGNED_SHORT_5_6_5 = 33635] = "UNSIGNED_SHORT_5_6_5", t[t.UNSIGNED_SHORT_4_4_4_4 = 32819] = "UNSIGNED_SHORT_4_4_4_4", t[t.UNSIGNED_SHORT_5_5_5_1 = 32820] = "UNSIGNED_SHORT_5_5_5_1", t[t.UNSIGNED_INT = 5125] = "UNSIGNED_INT", t[t.UNSIGNED_INT_10F_11F_11F_REV = 35899] = "UNSIGNED_INT_10F_11F_11F_REV", t[t.UNSIGNED_INT_2_10_10_10_REV = 33640] = "UNSIGNED_INT_2_10_10_10_REV", t[t.UNSIGNED_INT_24_8 = 34042] = "UNSIGNED_INT_24_8", t[t.UNSIGNED_INT_5_9_9_9_REV = 35902] = "UNSIGNED_INT_5_9_9_9_REV", t[t.BYTE = 5120] = "BYTE", t[t.SHORT = 5122] = "SHORT", t[t.INT = 5124] = "INT", t[t.FLOAT = 5126] = "FLOAT", t[t.FLOAT_32_UNSIGNED_INT_24_8_REV = 36269] = "FLOAT_32_UNSIGNED_INT_24_8_REV", t[t.HALF_FLOAT = 36193] = "HALF_FLOAT", t))(f || {});
   const H = {
     uint8x2: f.UNSIGNED_BYTE,
     uint8x4: f.UNSIGNED_BYTE,
@@ -370,7 +377,7 @@ let __tla = Promise.all([
       const o = this._geometryVaoHash[e.uid];
       let c = o[a];
       if (c) return o[r._key] = c, c;
-      Ce(e, r._attributeData);
+      Ie(e, r._attributeData);
       const u = e.buffers;
       c = n.createVertexArray(), n.bindVertexArray(c);
       for (let _ = 0; _ < u.length; _++) {
@@ -447,7 +454,7 @@ let __tla = Promise.all([
         3
       ]
     }
-  }), F = class ne {
+  }), P = class ne {
     constructor(e) {
       this.useBackBuffer = false, this._useBackBufferThisRender = false, this._renderer = e;
     }
@@ -456,7 +463,7 @@ let __tla = Promise.all([
         ...ne.defaultOptions,
         ...e
       };
-      this.useBackBuffer = r, this._antialias = s, this._renderer.context.supports.msaa || (m("antialiasing, is not supported on when using the back buffer"), this._antialias = false), this._state = O.for2d();
+      this.useBackBuffer = r, this._antialias = s, this._renderer.context.supports.msaa || (m("antialiasing, is not supported on when using the back buffer"), this._antialias = false), this._state = F.for2d();
       const n = new Te({
         vertex: `
                 attribute vec2 aPosition;
@@ -520,17 +527,17 @@ let __tla = Promise.all([
       this._backBufferTexture && (this._backBufferTexture.destroy(), this._backBufferTexture = null);
     }
   };
-  F.extension = {
+  P.extension = {
     type: [
       d.WebGLSystem
     ],
     name: "backBuffer",
     priority: 1
   };
-  F.defaultOptions = {
+  P.defaultOptions = {
     useBackBuffer: false
   };
-  let je = F;
+  let je = P;
   class ie {
     constructor(e) {
       this._colorMaskCache = 15, this._renderer = e;
@@ -684,9 +691,9 @@ let __tla = Promise.all([
     `;
   }
   function Ye(t) {
-    return Ue(t, "uboStd40", ze, Oe);
+    return Ue(t, "uboStd40", ze, Fe);
   }
-  class ue extends Pe {
+  class ue extends Oe {
     constructor() {
       super({
         createUboElements: $e,
@@ -818,7 +825,7 @@ let __tla = Promise.all([
       }
     }
   }
-  class _e extends Fe {
+  class _e extends Pe {
     constructor(e) {
       super(e), this.adaptor = new qe(), this.adaptor.init(e, this);
     }
@@ -1454,9 +1461,12 @@ let __tla = Promise.all([
     }
     return e;
   }
-  const _t = 0, ft = 1, ht = 2, lt = 3, dt = 4, mt = 5, me = class C {
-    constructor() {
-      this.gl = null, this.stateId = 0, this.polygonOffset = 0, this.blendMode = "none", this._blendEq = false, this.map = [], this.map[_t] = this.setBlend, this.map[ft] = this.setOffset, this.map[ht] = this.setCullFace, this.map[lt] = this.setDepthTest, this.map[dt] = this.setFrontFace, this.map[mt] = this.setDepthMask, this.checks = [], this.defaultState = O.for2d();
+  const _t = 0, ft = 1, ht = 2, lt = 3, dt = 4, mt = 5, me = class I {
+    constructor(e) {
+      this._invertFrontFace = false, this.gl = null, this.stateId = 0, this.polygonOffset = 0, this.blendMode = "none", this._blendEq = false, this.map = [], this.map[_t] = this.setBlend, this.map[ft] = this.setOffset, this.map[ht] = this.setCullFace, this.map[lt] = this.setDepthTest, this.map[dt] = this.setFrontFace, this.map[mt] = this.setDepthMask, this.checks = [], this.defaultState = F.for2d(), e.renderTarget.onRenderTargetChange.add(this);
+    }
+    onRenderTargetChange(e) {
+      this._invertFrontFace = !e.isRoot, this._cullFace ? this.setFrontFace(this._frontFace) : this._frontFaceDirty = true;
     }
     contextChange(e) {
       this.gl = e, this.blendModesMap = ut(e), this.resetState();
@@ -1476,10 +1486,10 @@ let __tla = Promise.all([
       this.stateId = e.data;
     }
     setBlend(e) {
-      this._updateCheck(C._checkBlendMode, e), this.gl[e ? "enable" : "disable"](this.gl.BLEND);
+      this._updateCheck(I._checkBlendMode, e), this.gl[e ? "enable" : "disable"](this.gl.BLEND);
     }
     setOffset(e) {
-      this._updateCheck(C._checkPolygonOffset, e), this.gl[e ? "enable" : "disable"](this.gl.POLYGON_OFFSET_FILL);
+      this._updateCheck(I._checkPolygonOffset, e), this.gl[e ? "enable" : "disable"](this.gl.POLYGON_OFFSET_FILL);
     }
     setDepthTest(e) {
       this.gl[e ? "enable" : "disable"](this.gl.DEPTH_TEST);
@@ -1488,10 +1498,12 @@ let __tla = Promise.all([
       this.gl.depthMask(e);
     }
     setCullFace(e) {
-      this.gl[e ? "enable" : "disable"](this.gl.CULL_FACE);
+      this._cullFace = e, this.gl[e ? "enable" : "disable"](this.gl.CULL_FACE), this._cullFace && this._frontFaceDirty && this.setFrontFace(this._frontFace);
     }
     setFrontFace(e) {
-      this.gl.frontFace(this.gl[e ? "CW" : "CCW"]);
+      this._frontFace = e, this._frontFaceDirty = false;
+      const r = this._invertFrontFace ? !e : e;
+      this._glFrontFace !== r && (this._glFrontFace = r, this.gl.frontFace(this.gl[r ? "CW" : "CCW"]));
     }
     setBlendMode(e) {
       if (this.blendModesMap[e] || (e = "normal"), e === this.blendMode) return;
@@ -1503,7 +1515,7 @@ let __tla = Promise.all([
       this.gl.polygonOffset(e, r);
     }
     resetState() {
-      this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, false), this.forceState(this.defaultState), this._blendEq = true, this.blendMode = "", this.setBlendMode("normal");
+      this._glFrontFace = false, this._frontFace = false, this._cullFace = false, this._frontFaceDirty = false, this._invertFrontFace = false, this.gl.frontFace(this.gl.CCW), this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, false), this.forceState(this.defaultState), this._blendEq = true, this.blendMode = "", this.setBlendMode("normal");
     }
     _updateCheck(e, r) {
       const s = this.checks.indexOf(e);
@@ -1528,7 +1540,7 @@ let __tla = Promise.all([
   let Et = me;
   class bt {
     constructor(e) {
-      this.target = re.TEXTURE_2D, this.texture = e, this.width = -1, this.height = -1, this.type = f.UNSIGNED_BYTE, this.internalFormat = D.RGBA, this.format = D.RGBA, this.samplerType = 0;
+      this.target = re.TEXTURE_2D, this.texture = e, this.width = -1, this.height = -1, this.type = f.UNSIGNED_BYTE, this.internalFormat = C.RGBA, this.format = C.RGBA, this.samplerType = 0;
     }
   }
   const St = {
@@ -1627,7 +1639,7 @@ let __tla = Promise.all([
       linear: 9986,
       nearest: 9984
     }
-  }, I = {
+  }, D = {
     "clamp-to-edge": 33071,
     repeat: 10497,
     "mirror-repeat": 33648
@@ -1644,7 +1656,7 @@ let __tla = Promise.all([
   function W(t, e, r, s, n, i, a, o) {
     const c = i;
     if (!o || t.addressModeU !== "repeat" || t.addressModeV !== "repeat" || t.addressModeW !== "repeat") {
-      const u = I[a ? "clamp-to-edge" : t.addressModeU], _ = I[a ? "clamp-to-edge" : t.addressModeV], h = I[a ? "clamp-to-edge" : t.addressModeW];
+      const u = D[a ? "clamp-to-edge" : t.addressModeU], _ = D[a ? "clamp-to-edge" : t.addressModeV], h = D[a ? "clamp-to-edge" : t.addressModeW];
       e[n](c, e.TEXTURE_WRAP_S, u), e[n](c, e.TEXTURE_WRAP_T, _), e.TEXTURE_WRAP_R && e[n](c, e.TEXTURE_WRAP_R, h);
     }
     if ((!o || t.magFilter !== "linear") && e[n](c, e.TEXTURE_MAG_FILTER, X[t.magFilter]), r) {
@@ -1980,6 +1992,8 @@ let __tla = Promise.all([
     }
     resetState() {
       this._activeTextureLocation = -1, this._boundTextures.fill(b.EMPTY.source), this._boundSamplers = /* @__PURE__ */ Object.create(null);
+      const e = this._gl;
+      this._premultiplyAlpha = false, e.pixelStorei(e.UNPACK_PREMULTIPLY_ALPHA_WEBGL, this._premultiplyAlpha);
     }
   }
   be.extension = {
@@ -2114,9 +2128,9 @@ let __tla = Promise.all([
     Et,
     oe,
     ie
-  ], It = [
-    ...He
   ], Dt = [
+    ...He
+  ], Ct = [
     J,
     pe,
     Se
@@ -2124,12 +2138,12 @@ let __tla = Promise.all([
   x.handleByNamedList(d.WebGLSystem, ge);
   x.handleByNamedList(d.WebGLPipes, Re);
   x.handleByNamedList(d.WebGLPipesAdaptor, ve);
-  x.add(...yt, ...It, ...Dt);
-  Pt = class extends Ie {
+  x.add(...yt, ...Dt, ...Ct);
+  Pt = class extends De {
     constructor() {
       const e = {
         name: "webgl",
-        type: De.WEBGL,
+        type: Ce.WEBGL,
         systems: ge,
         renderPipes: Re,
         renderPipeAdaptors: ve

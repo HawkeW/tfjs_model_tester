@@ -1,9 +1,10 @@
-import { g as R, E as f, f as oe, D as T, S as C, B as P, b as ae, c as E, d as U, w as A, h as y, i as ue, j as ce, k as L, M as k, l as D, m as de, o as he, p as H, q as pe, s as z, t as M, A as le, R as fe, e as B, __tla as __tla_0 } from "./ModelPerformanceTest-CoXpsfai.js";
+import { g as R, E as f, f as oe, D as T, S as C, B as P, b as ae, c as E, d as U, w as A, h as y, i as ue, j as ce, k as L, M as k, l as D, m as de, o as he, p as H, q as pe, s as z, t as M, A as le, R as fe, e as B, __tla as __tla_0 } from "./ModelPerformanceTest-zQ3DIqG6.js";
 import { S as F, l as ge, a as me } from "./colorToUniform-C2GHuDhf.js";
-import { c as _e, u as be, U as ye, B as xe, G as Ge, e as Be, R as Se, t as Pe, S as Te, a as Ce, __tla as __tla_1 } from "./SharedSystems-DLjwGstu.js";
-import { C as w, __tla as __tla_2 } from "./CanvasPool-JF4hqPRV.js";
-import { __tla as __tla_3 } from "./index-qfyYY3AK.js";
-let $e;
+import { c as _e, u as be, U as ye, B as xe, G as Ge, e as Be, R as Se, t as Pe, S as Te, a as Ce, __tla as __tla_1 } from "./SharedSystems-CsCF3qDc.js";
+import { C as w, __tla as __tla_2 } from "./CanvasPool-BnRu4Vcd.js";
+import { __tla as __tla_3 } from "./index-C_KNhBjg.js";
+import { __tla as __tla_4 } from "./base-D4gcL655.js";
+let Xe;
 let __tla = Promise.all([
   (() => {
     try {
@@ -26,6 +27,12 @@ let __tla = Promise.all([
   (() => {
     try {
       return __tla_3;
+    } catch {
+    }
+  })(),
+  (() => {
+    try {
+      return __tla_4;
     } catch {
     }
   })()
@@ -1666,7 +1673,7 @@ let __tla = Promise.all([
   B.handleByNamedList(f.WebGPUPipes, ie);
   B.handleByNamedList(f.WebGPUPipesAdaptor, ne);
   B.add(...Ie, ...We, ...Ve);
-  $e = class extends le {
+  Xe = class extends le {
     constructor() {
       const e = {
         name: "webgpu",
@@ -1680,6 +1687,6 @@ let __tla = Promise.all([
   };
 });
 export {
-  $e as WebGPURenderer,
+  Xe as WebGPURenderer,
   __tla
 };
