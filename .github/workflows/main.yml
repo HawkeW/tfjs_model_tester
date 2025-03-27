@@ -18,7 +18,7 @@ jobs:
           node-version: '20'  #  推荐使用 20 或更高的版本
 
       - name: Install dependencies
-        run: rm ./package-lock.json npm install  # 或者 yarn install，或者 pnpm install
+        run: rm ./package-lock.json & npm install  # 或者 yarn install，或者 pnpm install
 
       - name: Build project
         run: npm run build  # 或者 yarn build，或者 pnpm build。  确保你的 package.json 中有 build 命令
