@@ -321,7 +321,7 @@ const startBatchTest = async () => {
           imageName: image.file.name,
           warmupTime: avgWarmupTime,
           inferenceTime: Math.round(batchResults.reduce((sum, r) => sum + r.inferenceTime, 0) / testCount.value),
-          fps: Math.round(batchResults.reduce((sum, r) => sum + r.fps, 0) / TEST_ITERATIONS),
+          fps: Math.round(batchResults.reduce((sum, r) => sum + r.fps, 0) / testCount.value),
           detections: batchResults[0].detections,
           batchSize: testCount.value,
           minInferenceTime: Math.min(...batchResults.map((r) => r.inferenceTime)),
@@ -353,7 +353,7 @@ const exportResults = () => {
   const csvContent = testResults.value
     .map(
       (result) =>
-        `${result.modelName},${result.imageName},${result.inferenceTime},${result.minInferenceTime},${result.maxInferenceTime},${result.fps},${TEST_ITERATIONS}`,
+        `${result.modelName},${result.imageName},${result.inferenceTime},${result.minInferenceTime},${result.maxInferenceTime},${result.fps},${testCount.value}`,
     )
     .join('\n');
 
