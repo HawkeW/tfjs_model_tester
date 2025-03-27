@@ -3,6 +3,10 @@ import { createPinia } from 'pinia'
 import './assets/index.css'
 import App from './App.vue'
 import router from './router'
+import { initTFJS } from './lib/tfjs-init'
+
+// 初始化TFJS
+await initTFJS()
 
 const app = createApp(App)
 
