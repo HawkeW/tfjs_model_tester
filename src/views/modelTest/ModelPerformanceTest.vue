@@ -211,7 +211,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@/components/ui/table';
 import { useToast } from '@/components/ui/toast';
-import * as tf from '@tensorflow/tfjs';
 
 const { t } = useLanguage();
 const { toast } = useToast();
@@ -300,7 +299,7 @@ const startBatchTest = async () => {
   testResults.value = [];
 
   await videoDetectStore.setBackend(selectedBackend.value)
-  
+
   try {
     for (const currentModel of selectedModels.value) {
       const { name, url: model } = currentModel

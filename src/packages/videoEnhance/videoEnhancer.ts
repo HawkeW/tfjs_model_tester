@@ -1,9 +1,10 @@
 import jsyaml from 'js-yaml';
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-backend-webgl';
-import '@tensorflow/tfjs-backend-wasm';
 import '@tensorflow/tfjs-backend-webgpu';
+import '@tensorflow/tfjs-backend-wasm';
 import {TfModel} from './utils/model';
+import { initWasmBackend } from '@/lib/tfjs-init';
 
 interface YamlMetadata {
   description: string;
@@ -38,16 +39,19 @@ export class VideoEnhancer {
   }
 
   async init(backend: string = 'webgl') {
-    if (this.ready) {
-      const currentBackend = tf.getBackend();
-      if (currentBackend !== backend) {
-        await tf.setBackend(backend);
-        await tf.ready();
-        console.log( backend, tf.getBackend()); // trigger backend ini
-      }
-      return true;
+    const currentBackend = tf.getBackend();
+    if (currentBackend !== backend) {
+      this.ready = false;
     }
+    if (this.ready) return true;
     try {
+      if (backend === 'wasm') {
+        await initWasmBackend();
+        await tf.ready();
+        this.ready = true;
+        console.log( backend, tf.getBackend()); // trigger backend ini
+        return true;
+      }
       await tf.setBackend(backend);
       console.log( backend, tf.getBackend()); // trigger backend ini
       await tf.ready();
