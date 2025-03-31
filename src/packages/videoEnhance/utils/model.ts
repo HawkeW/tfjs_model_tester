@@ -1,7 +1,6 @@
 import DetectWorker from '../worker/detect.worker?worker';
-import {IModel, DetectOptions, DetectCallback, DetectResult} from './types';
-import {WorkerEventDataCmd, WorkerEventDataDetect, WorkerEventDataTestRun} from '../worker/types.worker';
-import {ObjectRenderer, createObjectRenderer} from './render';
+import { IModel, DetectOptions, DetectCallback, DetectResult } from './types';
+import { WorkerEventDataCmd, WorkerEventDataDetect, WorkerEventDataTestRun } from '../worker/types.worker';
 
 const detectWorker = new DetectWorker();
 
@@ -16,63 +15,16 @@ export class TfModel implements IModel {
 
   frameRate?: number;
 
-  renderer?: ObjectRenderer;
-
   get numClass() {
     return this.labels.length;
   }
 
-  constructor(options: IModel, opt?: {outputCanvas: HTMLCanvasElement}) {
+  constructor(options: IModel) {
     this.labels = options.labels;
     this.modelJson = options.modelJson;
-
-    if (opt?.outputCanvas) {
-      this.renderer = createObjectRenderer('pixi', opt.outputCanvas);
-    }
   }
 
-  async setRenderer(
-    input: HTMLVideoElement | HTMLCanvasElement,
-    output: HTMLCanvasElement,
-    onSelect: (res: {image: string} & DetectResult) => void,
-  ) {
-    const renderer = createObjectRenderer('pixi', output);
-    await renderer.init();
-    this.renderer = renderer;
-
-    this.renderer.onSelect = async (e, res) => {
-      const [_, modelHeight, modelWidth] = this.inputShape!;
-      const {canvas, ...data} = res;
-      const image = await this.capture(input, canvas);
-      onSelect({image, ...data, modelSize: [modelHeight, modelWidth]});
-    };
-  }
-
-  /**
-   * 将输入和输出合并成一个图片
-   * @param input 输入的视频或图片
-   * @param outputCanvas 输出的canvas
-   * @returns 合并后的图片
-   */
-  async capture(input: HTMLVideoElement | HTMLCanvasElement, outputCanvas: HTMLCanvasElement): Promise<string> {
-    const combinedCanvas = document.createElement('canvas');
-    const combinedCtx = combinedCanvas.getContext('2d');
-
-    // Set the combined canvas size to match the input
-    combinedCanvas.width = outputCanvas.width;
-    combinedCanvas.height = outputCanvas.height;
-
-    // Draw the input (first layer)
-    combinedCtx!.drawImage(input, 0, 0, combinedCanvas.width, combinedCanvas.height);
-
-    await this.renderer?.capture(combinedCanvas);
-
-    // combinedCtx!.drawImage(outputCanvas, 0, 0, combinedCanvas.width, combinedCanvas.height);
-
-    return combinedCanvas.toDataURL();
-  }
-
-  async loadModel(opt?: {onProgress: (percent: number) => void}) {
+  async loadModel(opt?: { onProgress: (percent: number) => void }) {
     return new Promise<boolean>((resolve, reject) => {
       detectWorker.postMessage({
         cmd: WorkerEventDataCmd.loadModel,
@@ -81,7 +33,7 @@ export class TfModel implements IModel {
           labels: this.labels,
         },
       });
-      detectWorker.onmessage = (ev: MessageEvent<{msg: any; cmd: string; percent: number; inputShape?: number[]}>) => {
+      detectWorker.onmessage = (ev: MessageEvent<{ msg: any; cmd: string; percent: number; inputShape?: number[] }>) => {
         if (ev.data.cmd === 'loadModel') {
           opt?.onProgress?.(ev.data.percent);
 
@@ -134,27 +86,27 @@ export class TfModel implements IModel {
   private detectState = false;
 
   /**
-   * Function to detect video from every source.
-   * @param {HTMLVideoElement | HTMLCanvasElement} vidSource video source
-   * @param {HTMLCanvasElement} canvasRef canvas reference
-   */
+ * Function to detect video from every source.
+ * @param {HTMLVideoElement | HTMLCanvasElement} vidSource video source
+ * @param {HTMLCanvasElement} canvasRef canvas reference
+ */
   detectVideo(
     source: HTMLVideoElement | HTMLCanvasElement,
-    opt: {once: boolean; onOutput?: DetectCallback; scoreThreshold?: number} = {once: false, scoreThreshold: 0.6},
+    opt: { once: boolean; onOutput?: DetectCallback; scoreThreshold?: number } = { once: false, scoreThreshold: 0.6 },
   ) {
     const detectFrame = async () => {
       if (!this.detectState || this.loaded == null) {
-        this.renderer?.clear();
+        opt.onOutput?.(null);
         return;
       }
 
       if (source instanceof HTMLVideoElement && source.videoWidth === 0 && source.srcObject === null) {
-        this.renderer?.clear();
+        opt.onOutput?.(null);
         return; // handle if source is closed
       }
 
       if (source instanceof HTMLCanvasElement && source.width === 0) {
-        this.renderer?.clear();
+        opt.onOutput?.(null);
         return; // handle if source is closed
       }
       // 图像预处理。这里转换时做了压缩
@@ -167,27 +119,15 @@ export class TfModel implements IModel {
         resizeWidth,
         resizeHeight,
       });
-      const result = await this.detect(imageCapture, {scoreThreshold: opt.scoreThreshold});
+      const result = await this.detect(imageCapture, { scoreThreshold: opt.scoreThreshold });
 
       const [xRatio, yRatio] = result.ratios;
       result.ratios = [xRatio / resizeRatio, yRatio / resizeRatio];
-      // 渲染检测结果
-      this.renderer?.render(
-        result.boxes,
-        result.labels,
-        result.scores,
-        result.classes,
-        result.ratios,
-        opt.scoreThreshold,
-      );
 
       // 如果检测到物体，则执行回调
-      if (result.boxes.length) {
-        opt.onOutput?.(result);
-      }
-      // 如果只检测一次，则清空画布
+      opt.onOutput?.(result);
+      // 只检测一次，有结果则停止检测
       if (opt.once && result.boxes.length) {
-        this.renderer?.clear();
         return;
       }
       // 如果设置了帧率，则按照帧率检测
@@ -211,7 +151,6 @@ export class TfModel implements IModel {
     detectWorker.postMessage({
       cmd: WorkerEventDataCmd.disposeModel,
     });
-    this.renderer?.dispose();
   }
 
   getSourceSize(source: HTMLVideoElement | HTMLCanvasElement) {
