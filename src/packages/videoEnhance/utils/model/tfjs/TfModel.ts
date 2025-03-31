@@ -48,7 +48,7 @@ async function init(backend: string = 'webgl') {
 export class TfModel implements IModel {
   labels: string[];
 
-  modelJson: string;
+  src: string;
 
   loaded = false;
   
@@ -63,7 +63,7 @@ export class TfModel implements IModel {
 
   constructor(options: {labels: string[], modelJson: string, frameRate?: number, inputShape?: number[]}) {
     this.labels = options.labels;
-    this.modelJson = options.modelJson;
+    this.src = options.modelJson;
   }
 
   static async fromUrl(modelName: string, onProgress: (progress: number) => void) {
@@ -105,7 +105,7 @@ export class TfModel implements IModel {
       detectWorkerTf.postMessage({
         cmd: WorkerEventDataCmd.loadModel,
         data: {
-          model: this.modelJson,
+          model: this.src,
           labels: this.labels,
         },
       });

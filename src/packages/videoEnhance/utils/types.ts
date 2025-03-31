@@ -1,8 +1,8 @@
 import type {GraphModel} from '@tensorflow/tfjs';
 
 export interface IModel {
-  modelJson: string;
-  net?: GraphModel;
+  src: string;
+  net?: unknown;
   labels: string[];
   frameRate?: number;
 
