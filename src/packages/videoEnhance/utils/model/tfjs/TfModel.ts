@@ -1,8 +1,49 @@
-import DetectWorker from '../worker/detect.worker?worker';
-import { IModel, DetectOptions, DetectCallback, DetectResult } from './types';
-import { WorkerEventDataCmd, WorkerEventDataDetect, WorkerEventDataTestRun } from '../worker/types.worker';
+import * as tf from '@tensorflow/tfjs';
+import '@tensorflow/tfjs-backend-webgl';
+import '@tensorflow/tfjs-backend-webgpu';
+import '@tensorflow/tfjs-backend-wasm';
+import { initWasmBackend } from '@/lib/tfjs-init';
+import jsyaml from 'js-yaml';
+import { detectWorkerTf } from './worker/workerInstance';
+import { WorkerEventDataCmd, WorkerEventDataDetect, WorkerEventDataTestRun } from '../types/types.worker';
+import { IModel, DetectOptions, DetectCallback, DetectResult } from '../../types';
 
-const detectWorker = new DetectWorker();
+interface YamlMetadata {
+  description: string;
+  author: string;
+  date: string;
+  version: string;
+  license: string;
+  docs: string;
+  stride: number;
+  task: string;
+  batch: number;
+  imgsz: number[];
+  names: Record<string, string>;
+}
+
+
+let ready = false;
+async function init(backend: string = 'webgl') {
+  const currentBackend = tf.getBackend();
+  if (currentBackend !== backend) {
+    ready = false;
+  }
+  if (ready) return true;
+  try {
+    if (backend === 'wasm') {
+      await initWasmBackend();
+    } else {
+      await tf.setBackend(backend);
+    }
+    console.log( backend, tf.getBackend()); // trigger backend ini
+    await tf.ready();
+    return true;
+  } catch (e) {
+    console.error('Failed to initialize backend:', e);
+    return false;
+  }
+}
 
 export class TfModel implements IModel {
   labels: string[];
@@ -10,6 +51,7 @@ export class TfModel implements IModel {
   modelJson: string;
 
   loaded = false;
+  
 
   inputShape?: number[];
 
@@ -19,21 +61,55 @@ export class TfModel implements IModel {
     return this.labels.length;
   }
 
-  constructor(options: IModel) {
+  constructor(options: {labels: string[], modelJson: string, frameRate?: number, inputShape?: number[]}) {
     this.labels = options.labels;
     this.modelJson = options.modelJson;
   }
 
+  static async fromUrl(modelName: string, onProgress: (progress: number) => void) {
+    await init();
+
+    const assetBase = 'https://office-website-1251680498.cos.ap-shanghai.myqcloud.com/xinzhou/web_model';
+    const modelJson = `${assetBase}/${modelName}/model.json`;
+    const modelMeta = `${assetBase}/${modelName}/metadata.yaml`;
+
+    const yamlText = await (await fetch(modelMeta)).text();
+    const yamlData = jsyaml.load(yamlText) as YamlMetadata;
+    const labels = Object.values(yamlData.names);
+
+    if (!labels) {
+      console.error('No Labels Fetched');
+      return undefined;
+    }
+
+    const model = new TfModel({
+      modelJson,
+      labels,
+    });
+
+    let loadingModelProgress = 0;
+    await model.loadModel({
+      onProgress: (percent) => {
+        loadingModelProgress = Math.round(percent);
+        onProgress(loadingModelProgress);
+      },
+    });
+
+    onProgress(100)
+
+    return model;
+  }
+
   async loadModel(opt?: { onProgress: (percent: number) => void }) {
     return new Promise<boolean>((resolve, reject) => {
-      detectWorker.postMessage({
+      detectWorkerTf.postMessage({
         cmd: WorkerEventDataCmd.loadModel,
         data: {
           model: this.modelJson,
           labels: this.labels,
         },
       });
-      detectWorker.onmessage = (ev: MessageEvent<{ msg: any; cmd: string; percent: number; inputShape?: number[] }>) => {
+      detectWorkerTf.onmessage = (ev: MessageEvent<{ msg: any; cmd: string; percent: number; inputShape?: number[] }>) => {
         if (ev.data.cmd === 'loadModel') {
           opt?.onProgress?.(ev.data.percent);
 
@@ -54,14 +130,14 @@ export class TfModel implements IModel {
    */
   async detect(source: ImageBitmap, opt?: DetectOptions): Promise<DetectResult> {
     return new Promise((resolve, reject) => {
-      detectWorker.postMessage({
+      detectWorkerTf.postMessage({
         cmd: WorkerEventDataCmd.detect,
         data: {
           source,
           options: opt,
         },
       } as WorkerEventDataDetect);
-      detectWorker.onmessage = (ev: MessageEvent<DetectResult>) => {
+      detectWorkerTf.onmessage = (ev: MessageEvent<DetectResult>) => {
         resolve(ev.data);
       };
     });
@@ -70,10 +146,10 @@ export class TfModel implements IModel {
   testRun() {
     return new Promise((resolve, reject) => {
       if (!this.inputShape) return;
-      detectWorker.postMessage({
+      detectWorkerTf.postMessage({
         cmd: WorkerEventDataCmd.testRun,
       } as WorkerEventDataTestRun);
-      detectWorker.onmessage = (ev: MessageEvent<boolean>) => {
+      detectWorkerTf.onmessage = (ev: MessageEvent<boolean>) => {
         if (ev.data) {
           resolve(ev.data);
         } else {
@@ -148,7 +224,7 @@ export class TfModel implements IModel {
   }
 
   dispose() {
-    detectWorker.postMessage({
+    detectWorkerTf.postMessage({
       cmd: WorkerEventDataCmd.disposeModel,
     });
   }

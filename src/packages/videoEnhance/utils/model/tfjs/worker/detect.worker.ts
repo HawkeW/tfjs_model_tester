@@ -1,15 +1,15 @@
 /* eslint-disable no-restricted-globals */
 /// <reference lib="webworker" />
 import * as tf from '@tensorflow/tfjs';
-import {detect, testRun} from '../utils/detect';
-import {WorkerEventData} from './types.worker';
+import {detect, testRun} from '../detect';
+import {WorkerEventData, WorkerEventDataCmd} from '../../types';
 
 let model: tf.GraphModel<string | tf.io.IOHandler> | null = null;
 let modelLabels: string[] = [];
 self.onmessage = async (event: MessageEvent<WorkerEventData>) => {
   const {data} = event;
   switch (data.cmd) {
-    case 'loadModel': {
+    case WorkerEventDataCmd.loadModel: {
       const {model: modelDataJson, labels} = data.data;
       modelLabels = labels;
       model = await tf.loadGraphModel(modelDataJson, {
@@ -29,12 +29,12 @@ self.onmessage = async (event: MessageEvent<WorkerEventData>) => {
       });
       break;
     }
-    case 'disposeModel': {
+    case WorkerEventDataCmd.disposeModel: {
       model?.dispose();
       model = null;
       break;
     }
-    case 'detect': {
+    case WorkerEventDataCmd.detect: {
       if (!model) return;
       const {source, options} = data.data;
       const result = await detect(
@@ -49,7 +49,7 @@ self.onmessage = async (event: MessageEvent<WorkerEventData>) => {
       self.postMessage(result);
       break;
     }
-    case 'testRun': {
+    case WorkerEventDataCmd.testRun: {
       const result = await testRun({
         labels: modelLabels,
         inputShape: model!.inputs[0].shape as number[],
@@ -58,12 +58,12 @@ self.onmessage = async (event: MessageEvent<WorkerEventData>) => {
       self.postMessage(result);
       break;
     }
-    case 'stop': {
+    case WorkerEventDataCmd.stop: {
       self.postMessage('WORKER STOPPED');
       self.close(); // Terminates the worker.
       break;
     }
     default:
-      self.postMessage(`Unknown command: ${data.cmd}`);
+      self.postMessage(`Unknown command: ${JSON.stringify(data)}`);
   }
 };

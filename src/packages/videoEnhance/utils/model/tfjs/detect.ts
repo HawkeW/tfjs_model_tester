@@ -1,5 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
-import {DetectOptions, DetectResult} from './types';
+import {DetectOptions, DetectResult} from '../../types';
 
 /**
  * Preprocess image / frame before forwarded into the model

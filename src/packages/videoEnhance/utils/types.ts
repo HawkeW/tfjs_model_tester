@@ -4,6 +4,24 @@ export interface IModel {
   modelJson: string;
   net?: GraphModel;
   labels: string[];
+  frameRate?: number;
+
+  inputShape?: number[];
+
+  dispose(): void;
+
+  get numClass(): number;
+
+  detect(source: ImageBitmap, opt?: DetectOptions): Promise<DetectResult>;
+
+  detectVideo(
+    source: HTMLVideoElement | HTMLCanvasElement,
+    opt: { once: boolean; onOutput?: DetectCallback; scoreThreshold?: number },
+  ):void;
+
+  testRun(): Promise<unknown>;
+
+  loadModel(opt?: { onProgress: (percent: number) => void }): Promise<boolean>;
 }
 
 export type DetectResult = {

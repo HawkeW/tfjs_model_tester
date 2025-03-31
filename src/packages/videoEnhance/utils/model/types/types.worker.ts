@@ -1,4 +1,4 @@
-import {DetectOptions} from '../utils/types';
+import {DetectOptions} from '../../types';
 
 export enum WorkerEventDataCmd {
   detect = 'detect',
