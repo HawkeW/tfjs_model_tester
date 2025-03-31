@@ -5,7 +5,7 @@ import wasm from "vite-plugin-wasm";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/tfjs_model_tester',
+  base: '/',
   plugins: [wasm(), vue(), topLevelAwait()],
   server: {
     headers: {
@@ -14,21 +14,18 @@ export default defineConfig({
     }
   },
   build: {
-    assetsInlineLimit: 0,
     rollupOptions: {
       output: {
-        assetFileNames: (assetInfo) => {
-          const name = assetInfo.name || '';
-          if (name.includes('tfjs-backend-wasm')) {
-            return '[name][extname]';
-          }
-          if (assetInfo.name.endsWith('.wasm')) {
-            return 'assets/wasm/[name][extname]';
-          }
-          return 'assets/[name]-[hash][extname]';
+        manualChunks: {
+          'tfjs': [
+            '@tensorflow/tfjs', 
+            '@tensorflow/tfjs-backend-webgpu', 
+            '@tensorflow/tfjs-backend-wasm',
+            '@tensorflow/tfjs-backend-webgl',
+          ],
         }
       }
-    }
+    } 
   },
   resolve: {
     alias: {
