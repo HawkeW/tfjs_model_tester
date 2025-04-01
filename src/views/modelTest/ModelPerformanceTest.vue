@@ -211,6 +211,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@/components/ui/table';
 import { useToast } from '@/components/ui/toast';
+import { ModelType } from '@/packages/videoEnhance';
 
 const { t } = useLanguage();
 const { toast } = useToast();
@@ -303,7 +304,7 @@ const startBatchTest = async () => {
   try {
     for (const currentModel of selectedModels.value) {
       const { name, url: model } = currentModel
-      await videoDetectStore.loadModel(model);
+      await videoDetectStore.loadModel(ModelType.tfjs, model);
 
       for (const image of testImages.value) {
         const startTime = performance.now();
